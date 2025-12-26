@@ -1,0 +1,31 @@
+{
+  "name": "lowcode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run:client": "pnpm --filter client dev",
+    "build:app": "pnpm --filter client build",
+    "preview:app": "pnpm --filter client preview",
+    "run:server": "pnpm --filter server run start:dev",
+    "build:share": "pnpm --filter share run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.26.2",
+  "devDependencies": {
+    "@types/lodash": "^4.17.21",
+    "@types/node": "^24.10.4",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.1.0",
+    "antd": "^6.1.2",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  }
+}

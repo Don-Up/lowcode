@@ -1,0 +1,8 @@
+# Build output
+dist/
+
+# TypeScript cache (if you have tsconfig.tsbuildinfo)
+*.tsbuildinfo
+
+# Node modules (should never exist here thanks to pnpm workspace, but just in case)
+node_modules/

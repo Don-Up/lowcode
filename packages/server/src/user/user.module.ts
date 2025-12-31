@@ -8,6 +8,7 @@ import { SecretTool } from '../utils/SecretTool';
 @Module({
   imports: [PrismaModule],
   controllers: [UserController],
-  providers: [UserService, CaptchaTool, SecretTool]
+  providers: [UserService, CaptchaTool, SecretTool],
+  exports: [UserService],
 })
 export class UserModule {}

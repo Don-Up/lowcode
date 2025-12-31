@@ -6,7 +6,8 @@ import { UserModule } from './user/user.module';
 import { LoggerModule } from './logger/logger.module';
 import { CacheModule } from '@nestjs/cache-manager';
 import { redisStore } from 'cache-manager-redis-yet';
-import { RedisModule } from './redis/redis.module'; // Modern Redis store
+import { RedisModule } from './redis/redis.module';
+import { AuthModule } from './auth/auth.module'; // Modern Redis store
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { RedisModule } from './redis/redis.module'; // Modern Redis store
     UserModule,
     LoggerModule,
     RedisModule,
+    AuthModule,
     CacheModule.register({
       isGlobal: true,
       store: redisStore,

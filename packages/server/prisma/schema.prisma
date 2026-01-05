@@ -8,8 +8,44 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  email    String  @unique
-  name     String
-  password String?
+  id         Int         @id @default(autoincrement())
+  email      String      @unique
+  name       String
+  password   String?
+  pages      Page[]
+  components Component[]
+}
+
+model Page {
+  id        Int     @id @default(autoincrement())
+  accountId Int
+  pageName  String
+  tdk       String?
+  desc      String?
+
+  user          User            @relation(fields: [accountId], references: [id])
+  components    Component[]
+  componentData ComponentData[] // 新增：页面关联的 ComponentData
+}
+
+model Component {
+  id        Int    @id @default(autoincrement())
+  accountId Int
+  type      String
+  pageId    Int
+  options   Json
+
+  user User @relation(fields: [accountId], references: [id])
+  page Page @relation(fields: [pageId], references: [id])
+}
+
+model ComponentData {
+  id     Int    @id @default(autoincrement())
+  user   String // 通常是用户标识（如 email），如果要强关联 User 表可改为 Int + 外键
+  pageId Int
+  props  Json
+
+  page Page @relation(fields: [pageId], references: [id])
+
+  @@unique([user, pageId]) // 防止同一用户同一页面重复插入
 }

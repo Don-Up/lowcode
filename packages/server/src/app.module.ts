@@ -8,6 +8,7 @@ import { CacheModule } from '@nestjs/cache-manager';
 import { redisStore } from 'cache-manager-redis-yet';
 import { RedisModule } from './redis/redis.module';
 import { AuthModule } from './auth/auth.module'; // Modern Redis store
+import { LowCodeModule } from './low-code/low-code.module';
 
 @Module({
   imports: [
@@ -23,7 +24,8 @@ import { AuthModule } from './auth/auth.module'; // Modern Redis store
       port: parseInt(process.env.REDIS_PORT) || 6379,
       // password: process.env.REDIS_PASSWORD, // if needed
       ttl: 300, // default TTL in seconds (optional)
-    }),],
+    }),
+    LowCodeModule,],
   controllers: [AppController],
   providers: [AppService],
 })

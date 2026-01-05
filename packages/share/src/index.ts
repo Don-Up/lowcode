@@ -1,1 +1,1 @@
-export const test = "tes"
+export * from './components';

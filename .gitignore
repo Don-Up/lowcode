@@ -7,6 +7,10 @@ pnpm-lock.yaml
 dist/
 build/
 
+# next.js
+.next/
+out/
+
 # Vite / React (client)
 packages/client/.vite/
 packages/client/dist/

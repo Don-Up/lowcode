@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "run:client": "pnpm --filter client dev",
+    "run:client-next": "pnpm --filter client-next dev",
     "build:app": "pnpm --filter client build",
     "preview:app": "pnpm --filter client preview",
     "run:server": "pnpm --filter server run start:dev",

@@ -1,7 +1,7 @@
 import { Component } from '@/app/editor/components/Model';
 
 
-interface TextComponentProps extends Component {
+interface TextProps extends Component {
   text?: string;
   fontSize?: number;
   fontWeight?: number;
@@ -13,7 +13,7 @@ interface TextComponentProps extends Component {
   margin?: number;
 }
 
-export const DefaultTextComponentProps: TextComponentProps = {
+export const DefaultTextComponentProps: TextProps = {
   id: '',
   accountId: 0,
   pageId: 0,
@@ -29,4 +29,4 @@ export const DefaultTextComponentProps: TextComponentProps = {
   margin: 0,
 };
 
-export default TextComponentProps;
+export default TextProps;

@@ -3,11 +3,11 @@
 import React, { useEffect } from 'react';
 import { Form, Input, InputNumber, Select, Switch } from 'antd';
 import { useAppDispatch } from '@/store/hooks';
-import TextComponentProps from '@/app/editor/components/text/TextComponentProps';
+import TextProps from '@/app/editor/components/text/TextProps';
 
 
-interface TextPropCompProps extends TextComponentProps {
-  onChange: (values: TextComponentProps) => void;
+interface TextPropCompProps extends TextProps {
+  onChange: (values: TextProps) => void;
 }
 
 const TextPropComp: React.FC<TextPropCompProps> = ({
@@ -28,7 +28,7 @@ const TextPropComp: React.FC<TextPropCompProps> = ({
   }, [text, color, fontSize, textAlign, fontWeight, disabled]);
 
   const handleValuesChange = () => {
-    const values = form.getFieldsValue() as TextComponentProps;
+    const values = form.getFieldsValue() as TextProps;
     if (onChange) {
       onChange(values);
     }

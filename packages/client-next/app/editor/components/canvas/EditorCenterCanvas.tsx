@@ -1,41 +1,46 @@
-"use client"
+'use client';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { clearComponents, swapComponent } from '@/store/componentSlice';
 import SortableContainer from '@/components/DragSort/SortableContainer';
 import SortableItem from '@/components/DragSort/SortableItem';
 import { Component } from '@/app/editor/components/Model';
 import TextComponent from '@/app/editor/components/text';
-import TextComponentProps from '@/app/editor/components/text/TextComponentProps';
+import TextProps from '@/app/editor/components/text/TextProps';
 import { useOnce } from '@/hooks/useOnce';
+import ImageComponent from '@/app/editor/components/image';
 
 export function getComp(comp: Component, isSelected: boolean = false) {
-  const commonProps = {...comp, isSelected}; // Pass isSelected to indicate selection
-  console.log("TEMP", "here....", commonProps.type)
+  const commonProps = { ...comp, isSelected }; // Pass isSelected to indicate selection
+  console.log('TEMP', 'here....', commonProps.type);
 
   switch (comp.type) {
-    case "titleText":
-      const textProps = commonProps as TextComponentProps;
+    case 'text':
+      const textProps = commonProps as TextProps;
       return <TextComponent {...textProps} />;
+    case 'image':
+      const imageProps = commonProps as ImageProps;
+      return <ImageComponent {...imageProps} />;
   }
-  return <></>
+  return <></>;
 }
 
-export default function EditorCenterCanvas(){
+export default function EditorCenterCanvas() {
 
   const dispatch = useAppDispatch();
 
   useOnce(() => {
-    console.log("TEMP", "clearComponents")
-    dispatch((clearComponents()))
-  })
+    console.log('TEMP', 'clearComponents');
+    dispatch((clearComponents()));
+  });
 
-  const {components, isPreviewMode, selectedComponentId} = useAppSelector((state) => state.component.present);
+  const { components, isPreviewMode, selectedComponentId } = useAppSelector((state) => state.component.present);
 
-  console.log("TEMP", "components: "+components.length)
+  console.log('TEMP', 'components: ' + components.length);
+
   function handleDragEnd(oldIndex: number, newIndex: number) {
     // Swap the component
     if (!isPreviewMode)
-      dispatch(swapComponent({oldIndex, newIndex}))
+      dispatch(swapComponent({ oldIndex, newIndex }));
   }
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
@@ -93,7 +98,7 @@ export default function EditorCenterCanvas(){
            onDragOver={handleDragOver}
            onDrop={handleDrop}>
         <div className="text-2xl font-bold">Canvas</div>
-        <div className={"flex flex-col gap-2 mt-5"}>
+        <div className={'flex flex-col gap-2 mt-5'}>
           {components.map(comp => <div key={comp.id}>
             <SortableItem id={comp.id} key={comp.id}>
               {getComp(comp)}

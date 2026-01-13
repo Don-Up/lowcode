@@ -20,8 +20,9 @@ import { Divider } from 'antd';
 import type { FC, ReactNode } from 'react';
 import { useAppDispatch } from '@/store/hooks';
 import { addComponent } from '@/store/componentSlice';
-import TextComponentProps, { DefaultTextComponentProps } from '@/app/editor/components/text/TextComponentProps';
+import { DefaultTextComponentProps } from '@/app/editor/components/text/TextProps';
 import { nanoid } from 'nanoid';
+import { DefaultImageComponentProps } from '@/app/editor/components/image/ImageProps';
 
 // 不同组件配置数组
 export const components = [
@@ -51,7 +52,7 @@ export const components = [
     icon: <FundViewOutlined />,
   },
   {
-    type: 'titleText',
+    type: 'text',
     name: '文本组件',
     icon: <FontSizeOutlined />,
   },
@@ -117,9 +118,13 @@ const EditorComponent: FC<ComponentProps> = ({ icon, name, type }) => {
   const dispatch = useAppDispatch();
 
   function handleClick() {
-    if(type === "titleText"){
-      console.log("TEMP", 1)
-      dispatch(addComponent({...DefaultTextComponentProps, id: nanoid(8)}));
+    switch (type) {
+      case 'text':
+        dispatch(addComponent({ ...DefaultTextComponentProps, id: nanoid(8) }));
+        break;
+      case 'image':
+        dispatch(addComponent({ ...DefaultImageComponentProps, id: nanoid(8) }));
+        break;
     }
   }
 

@@ -1,14 +1,14 @@
 'use client';
 
 import React from 'react';
-import TextComponentProps from '@/app/editor/components/text/TextComponentProps';
+import TextProps from '@/app/editor/components/text/TextProps';
 import { Typography } from 'antd';
 import { useAppDispatch } from '@/store/hooks';
 import { setSelectComponentId } from '@/store/componentSlice';
 
 const { Text } = Typography;
 
-const TextComponent: React.FC<TextComponentProps> = ({
+const TextComponent: React.FC<TextProps> = ({
                                                        id,
                                                        text,
                                                        fontSize,

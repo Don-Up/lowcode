@@ -1,6 +1,7 @@
 import EditorHeader from "./components/EditorHeader";
 import EditorLeftPanel from "./components/EditorLeftPanel";
 import EditorRightPanel from "./components/EditorRightPanel";
+import Canvas from '@/app/editor/components/canvas/EditorCenterCanvas';
 
 function Page() {
   return (
@@ -17,7 +18,7 @@ function Page() {
         {/* 中间编辑组件 */}
         <div className="flex-auto flex items-center justify-center">
           <div className="editor-canvas-container w-[380px] h-[700px] bg-white text-left overflow-y-auto overflow-x-hidden">
-            中间编辑组件
+            <Canvas />
           </div>
         </div>
         {/* 右侧编辑组件 */}

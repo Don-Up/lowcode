@@ -1,5 +1,6 @@
 import { Tabs } from "antd";
 import { AppstoreOutlined } from "@ant-design/icons";
+import ComponentList from '@/app/editor/components/ComponentList';
 
 export default function EditLeftPanel() {
   const items = [
@@ -13,6 +14,7 @@ export default function EditLeftPanel() {
       /**
        * 不同组件列表
        */
+      children: <ComponentList />,
     },
   ];
 

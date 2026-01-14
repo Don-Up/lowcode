@@ -8,6 +8,9 @@ import TextComponent from '@/app/editor/components/text';
 import TextProps from '@/app/editor/components/text/TextProps';
 import { useOnce } from '@/hooks/useOnce';
 import ImageComponent from '@/app/editor/components/image';
+import SwiperComponent from '@/app/editor/components/swiper';
+import SwiperProps from '@/app/editor/components/swiper/SwiperProps';
+import ImageProps from '@/app/editor/components/image/ImageProps';
 
 export function getComp(comp: Component, isSelected: boolean = false) {
   const commonProps = { ...comp, isSelected }; // Pass isSelected to indicate selection
@@ -20,6 +23,8 @@ export function getComp(comp: Component, isSelected: boolean = false) {
     case 'image':
       const imageProps = commonProps as ImageProps;
       return <ImageComponent {...imageProps} />;
+    case 'swiper':
+      return <SwiperComponent {...(commonProps as SwiperProps)} />;
   }
   return <></>;
 }

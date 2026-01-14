@@ -23,6 +23,7 @@ import { addComponent } from '@/store/componentSlice';
 import { DefaultTextComponentProps } from '@/app/editor/components/text/TextProps';
 import { nanoid } from 'nanoid';
 import { DefaultImageComponentProps } from '@/app/editor/components/image/ImageProps';
+import { DefaultSwiperComponentProps } from '@/app/editor/components/swiper/SwiperProps';
 
 // 不同组件配置数组
 export const components = [
@@ -124,6 +125,9 @@ const EditorComponent: FC<ComponentProps> = ({ icon, name, type }) => {
         break;
       case 'image':
         dispatch(addComponent({ ...DefaultImageComponentProps, id: nanoid(8) }));
+        break;
+      case 'swiper':
+        dispatch(addComponent({ ...DefaultSwiperComponentProps, id: nanoid(8)}))
         break;
     }
   }

@@ -6,6 +6,7 @@ import TextPropComp from '@/app/editor/components/text/TextPropComponent';
 import ImagePropComp from '@/app/editor/components/image/ImagePropComponent';
 import { updateComponent } from '@/store/componentSlice';
 import { Component } from '@/app/editor/components/Model';
+import SwiperPropComp from '@/app/editor/components/swiper/SwiperPropComponent';
 
 export default function EditorRightPanel() {
 
@@ -21,6 +22,8 @@ export default function EditorRightPanel() {
         return <TextPropComp {...selectedComp} onChange={handleCompChange} />;
       case 'image':
         return <ImagePropComp {...selectedComp} onChange={handleCompChange} />;
+      case 'swiper':
+        return <SwiperPropComp {...selectedComp} onChange={handleCompChange} />;
       default:
         return <></>;
     }

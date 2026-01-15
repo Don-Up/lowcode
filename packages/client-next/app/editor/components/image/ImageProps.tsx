@@ -5,7 +5,7 @@ export interface ImageProps extends Component {
   name?: string;
   src?: string;
   height?: number;
-  fillMode?: string;
+  fillMode?: "cover" | "contain" | "fill" | "scale-down" | "none";
 }
 
 export const DefaultImageComponentProps: ImageProps = {
@@ -14,7 +14,7 @@ export const DefaultImageComponentProps: ImageProps = {
   pageId: 0,
   type: 'image',
   name: 'Image',
-  src: 'https://hk.portal-pokemon.com/play/resources/pokedex/img/pm/cf47f9fac4ed3037ff2a8ea83204e32aff8fb5f3.png',
+  src: 'https://sdfsdf.dev/600x200.png',
   height: 200,
   fillMode: 'cover',
 };

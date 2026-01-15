@@ -1,10 +1,10 @@
 'use client';
 
 import React from 'react';
-import SwiperProps from '@/app/editor/components/image/SwiperProps';
 import { useAppDispatch } from '@/store/hooks';
 import { setSelectComponentId } from '@/store/componentSlice';
 import { Carousel } from 'antd';
+import SwiperProps from '@/app/editor/components/swiper/SwiperProps';
 
 const SwiperComponent: React.FC<SwiperProps> = ({
                                                   id,
@@ -22,20 +22,22 @@ const SwiperComponent: React.FC<SwiperProps> = ({
   }
 
   return (
-    <div className="cursor-pointer hover:bg-gray-100 flex" onClick={handleClick}>
+    <div onClick={handleClick}>
       <Carousel
         autoplay={autoPlay}
         dots={showIndicators}
-        dotPlacement={dotPosition || 'bottom'}
+        dotPosition={dotPosition || 'bottom'}
         pauseOnHover
         autoplaySpeed={interval || 3000}
+        className={'max-h-40'}
       >
         {images?.map((image, index) => (
           <div key={index}>
             <img
               src={image.src}
               alt={`slide-${index}`}
-              style={{ width: '100%', height: 'auto' }}
+              style={{ objectFit: image.fillMode || 'cover' }}
+              className={'bg-green-400 max-h-40 w-full'}
             />
           </div>
         ))}

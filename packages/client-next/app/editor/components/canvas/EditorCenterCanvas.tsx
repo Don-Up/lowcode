@@ -1,3 +1,4 @@
+// packages/client-next/app/editor/components/canvas/EditorCenterCanvas.tsx
 'use client';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { clearComponents, swapComponent } from '@/store/componentSlice';
@@ -11,6 +12,10 @@ import ImageComponent from '@/app/editor/components/image';
 import SwiperComponent from '@/app/editor/components/swiper';
 import SwiperProps from '@/app/editor/components/swiper/SwiperProps';
 import ImageProps from '@/app/editor/components/image/ImageProps';
+import CardProps from '@/app/editor/components/card/CardProps';
+import CardComponent from '@/app/editor/components/card';
+import ListProps from '@/app/editor/components/list/ListProps';
+import ListComponent from '@/app/editor/components/list';
 
 export function getComp(comp: Component, isSelected: boolean = false) {
   const commonProps = { ...comp, isSelected }; // Pass isSelected to indicate selection
@@ -24,7 +29,14 @@ export function getComp(comp: Component, isSelected: boolean = false) {
       const imageProps = commonProps as ImageProps;
       return <ImageComponent {...imageProps} />;
     case 'swiper':
-      return <SwiperComponent {...(commonProps as SwiperProps)} />;
+      const swipeProps = commonProps as SwiperProps
+      return <SwiperComponent {...swipeProps} />;
+    case 'card':
+      const cardProps =  commonProps as CardProps
+      return <CardComponent {...cardProps} />
+    case 'list':
+      const listProps = commonProps as ListProps
+      return <ListComponent {...listProps} />
   }
   return <></>;
 }
@@ -99,11 +111,10 @@ export default function EditorCenterCanvas() {
 
   return (
     <SortableContainer items={components} onDragEnd={handleDragEnd}>
-      <div className="flex-2 p-4 bg-white h-[calc(100vh-96px)] overflow-auto custom-scrollbar mx-2 my-2 round"
+      <div className="flex-2 bg-white custom-scrollbar round"
            onDragOver={handleDragOver}
            onDrop={handleDrop}>
-        <div className="text-2xl font-bold">Canvas</div>
-        <div className={'flex flex-col gap-2 mt-5'}>
+        <div className={'flex flex-col gap-2'}>
           {components.map(comp => <div key={comp.id}>
             <SortableItem id={comp.id} key={comp.id}>
               {getComp(comp)}

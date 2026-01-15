@@ -7,22 +7,17 @@ import { setSelectComponentId } from '@/store/componentSlice';
 
 const ImageComponent: React.FC<ImageProps> = ({
                                                 id,
-                                                name, src, height, fillMode,
-                                                width, alt, align, borderRadius, opacity,
-                                                disabled, color, fontSize, fontWeight,
+                                                name,
+                                                src,
+                                                height,
+                                                fillMode,
                                               }) => {
 
   const dispatch = useAppDispatch();
 
   const imageStyle = {
-    width: width ? `${width}px` : undefined,
-    height: height ? `${height}px` : undefined,
+    height: height ? `${height}px` : "50px",
     objectFit: fillMode || 'cover',
-    borderRadius: borderRadius ? `${borderRadius}px` : undefined,
-    opacity: opacity !== undefined ? opacity : (disabled ? 0.5 : 1),
-    margin: align === 'center' ? '0 auto' :
-            align === 'left' ? '0 0 0 0' :
-            align === 'right' ? '0 0 0 auto' : undefined,
   };
 
   function handleClick() {
@@ -32,10 +27,10 @@ const ImageComponent: React.FC<ImageProps> = ({
   return (
     <div className="cursor-pointer hover:bg-gray-100 flex" onClick={handleClick}>
       <img
-        src={src || '/placeholder-image.jpg'}
-        alt={alt || name || 'Image component'}
+        src={src}
+        alt={name}
         style={imageStyle}
-        className="max-w-full"
+        className="max-w-full bg-green-400 w-full"
       />
     </div>
   );

@@ -1,3 +1,4 @@
+// packages/client-next/app/editor/components/ComponentList.tsx
 'use client';
 
 import {
@@ -24,6 +25,8 @@ import { DefaultTextComponentProps } from '@/app/editor/components/text/TextProp
 import { nanoid } from 'nanoid';
 import { DefaultImageComponentProps } from '@/app/editor/components/image/ImageProps';
 import { DefaultSwiperComponentProps } from '@/app/editor/components/swiper/SwiperProps';
+import { DefaultCardComponentProps } from '@/app/editor/components/card/CardProps';
+import { DefaultListComponentProps } from '@/app/editor/components/list/ListProps';
 
 // 不同组件配置数组
 export const components = [
@@ -127,7 +130,13 @@ const EditorComponent: FC<ComponentProps> = ({ icon, name, type }) => {
         dispatch(addComponent({ ...DefaultImageComponentProps, id: nanoid(8) }));
         break;
       case 'swiper':
-        dispatch(addComponent({ ...DefaultSwiperComponentProps, id: nanoid(8)}))
+        dispatch(addComponent({ ...DefaultSwiperComponentProps, id: nanoid(8) }));
+        break;
+      case 'card':
+        dispatch(addComponent({ ...DefaultCardComponentProps, id: nanoid(8) }));
+        break;
+      case 'list':
+        dispatch(addComponent({ ...DefaultListComponentProps, id: nanoid(8) }));
         break;
     }
   }

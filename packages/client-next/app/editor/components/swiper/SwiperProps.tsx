@@ -3,11 +3,11 @@ import ImageProps, { DefaultImageComponentProps } from '@/app/editor/components/
 
 
 export interface SwiperProps extends Component {
-  interval: string
-  autoPlay: boolean
-  images: ImageProps[]
-  showIndicators: boolean
-  dotPosition: "bottom" | "top" | "left" | "right"
+  interval?: number
+  autoPlay?: boolean
+  images?: ImageProps[]
+  showIndicators?: boolean
+  dotPosition?: "bottom" | "top" | "left" | "right"
 }
 
 export const DefaultSwiperComponentProps: SwiperProps = {
@@ -15,9 +15,9 @@ export const DefaultSwiperComponentProps: SwiperProps = {
   accountId: 0,
   pageId: 0,
   type: 'swiper',
-  interval: '5000',
+  interval: 5000,
   autoPlay: true,
-  images: [DefaultImageComponentProps],
+  images: [DefaultImageComponentProps, DefaultImageComponentProps],
   showIndicators: true,
   dotPosition: "bottom",
 };

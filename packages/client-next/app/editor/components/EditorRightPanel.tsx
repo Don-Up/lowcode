@@ -1,3 +1,4 @@
+// packages/client-next/app/editor/components/EditorRightPanel.tsx
 'use client';
 import { Tabs } from 'antd';
 import { AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
@@ -7,6 +8,8 @@ import ImagePropComp from '@/app/editor/components/image/ImagePropComponent';
 import { updateComponent } from '@/store/componentSlice';
 import { Component } from '@/app/editor/components/Model';
 import SwiperPropComp from '@/app/editor/components/swiper/SwiperPropComponent';
+import CardPropComp from '@/app/editor/components/card/CardPropComponents';
+import ListPropComp from '@/app/editor/components/list/ListPropComponent';
 
 export default function EditorRightPanel() {
 
@@ -24,6 +27,10 @@ export default function EditorRightPanel() {
         return <ImagePropComp {...selectedComp} onChange={handleCompChange} />;
       case 'swiper':
         return <SwiperPropComp {...selectedComp} onChange={handleCompChange} />;
+      case 'card':
+        return <CardPropComp {...selectedComp} onChange={handleCompChange} />;
+      case 'list':
+        return <ListPropComp {...selectedComp} onChange={handleCompChange} />;
       default:
         return <></>;
     }

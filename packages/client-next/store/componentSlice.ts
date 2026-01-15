@@ -1,3 +1,4 @@
+// packages/client-next/store/componentSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Component } from '@/app/editor/components/Model';
 

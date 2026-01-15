@@ -27,6 +27,8 @@ import { DefaultImageComponentProps } from '@/app/editor/components/image/ImageP
 import { DefaultSwiperComponentProps } from '@/app/editor/components/swiper/SwiperProps';
 import { DefaultCardComponentProps } from '@/app/editor/components/card/CardProps';
 import { DefaultListComponentProps } from '@/app/editor/components/list/ListProps';
+import { DefaultSplitComponentProps } from '@/app/editor/components/split/SplitProps';
+import { DefaultEmptyComponentProps } from '@/app/editor/components/empty/EmptyProps';
 
 // 不同组件配置数组
 export const components = [
@@ -137,7 +139,12 @@ const EditorComponent: FC<ComponentProps> = ({ icon, name, type }) => {
         break;
       case 'list':
         dispatch(addComponent({ ...DefaultListComponentProps, id: nanoid(8) }));
+      case 'split':
+        dispatch(addComponent({ ...DefaultSplitComponentProps, id: nanoid(8) }));
         break;
+      case 'empty':
+        dispatch(addComponent({ ...DefaultEmptyComponentProps, id: nanoid(8) }));
+        break
     }
   }
 

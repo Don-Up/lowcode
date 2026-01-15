@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { Form, InputNumber, Select, Switch } from 'antd';
-import SwiperProps from '@/app/editor/components/image/SwiperProps';
+import SwiperProps from '@/app/editor/components/swiper/SwiperProps';
 
 
 interface SwiperPropCompProps extends SwiperProps {

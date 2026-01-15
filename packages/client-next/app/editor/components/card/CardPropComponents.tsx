@@ -1,3 +1,4 @@
+// packages/client-next/app/editor/components/card/CardPropComponents.tsx
 'use client';
 
 import React, { useEffect } from 'react';

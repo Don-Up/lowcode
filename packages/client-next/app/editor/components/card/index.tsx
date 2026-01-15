@@ -1,3 +1,4 @@
+// packages/client-next/app/editor/components/card/index.tsx
 'use client';
 
 import React from 'react';

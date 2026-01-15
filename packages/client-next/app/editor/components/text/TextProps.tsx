@@ -17,7 +17,7 @@ export const DefaultTextComponentProps: TextProps = {
   id: '',
   accountId: 0,
   pageId: 0,
-  type: 'titleText',
+  type: 'text',
   text: '',
   fontSize: 16,
   fontWeight: 400,

@@ -16,6 +16,10 @@ import CardProps from '@/app/editor/components/card/CardProps';
 import CardComponent from '@/app/editor/components/card';
 import ListProps from '@/app/editor/components/list/ListProps';
 import ListComponent from '@/app/editor/components/list';
+import SplitProps from '@/app/editor/components/split/SplitProps';
+import SplitComponent from '@/app/editor/components/split';
+import EmptyProps from '@/app/editor/components/empty/EmptyProps';
+import EmptyComponent from '@/app/editor/components/empty';
 
 export function getComp(comp: Component, isSelected: boolean = false) {
   const commonProps = { ...comp, isSelected }; // Pass isSelected to indicate selection
@@ -37,6 +41,10 @@ export function getComp(comp: Component, isSelected: boolean = false) {
     case 'list':
       const listProps = commonProps as ListProps
       return <ListComponent {...listProps} />
+    case 'split':
+      return <SplitComponent {...(commonProps as SplitProps)} />
+    case 'empty':
+      return <EmptyComponent {...(commonProps as EmptyProps)} />
   }
   return <></>;
 }

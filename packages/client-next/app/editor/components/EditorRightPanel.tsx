@@ -10,6 +10,8 @@ import { Component } from '@/app/editor/components/Model';
 import SwiperPropComp from '@/app/editor/components/swiper/SwiperPropComponent';
 import CardPropComp from '@/app/editor/components/card/CardPropComponents';
 import ListPropComp from '@/app/editor/components/list/ListPropComponent';
+import SplitPropComp from '@/app/editor/components/split/SplitPropComponent';
+import EmptyPropComponent from '@/app/editor/components/empty/EmptyPropComponent';
 
 export default function EditorRightPanel() {
 
@@ -31,6 +33,10 @@ export default function EditorRightPanel() {
         return <CardPropComp {...selectedComp} onChange={handleCompChange} />;
       case 'list':
         return <ListPropComp {...selectedComp} onChange={handleCompChange} />;
+      case 'split':
+        return <SplitPropComp {...selectedComp} onChange={handleCompChange} />;
+      case 'empty':
+        return <EmptyPropComponent {...selectedComp} onChange={handleCompChange} />;
       default:
         return <></>;
     }

@@ -1,3 +1,4 @@
+// packages/client-next/app/editor/components/card/CardProps.tsx
 import { Component } from '@/app/editor/components/Model';
 
 

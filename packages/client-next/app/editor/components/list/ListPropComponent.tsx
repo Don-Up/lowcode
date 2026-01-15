@@ -7,12 +7,13 @@ import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import ListProps, { DefaultListItemComponentProps, ListItemProps } from '@/app/editor/components/list/ListProps';
 
 interface ListPropCompProps extends ListProps {
-  onChange: (values: Partial<ListProps>) => void;
+  onChange: (values: ListProps) => void;
 }
 
-const ListPropComp: React.FC<ListPropCompProps> = ({ id, list = [], onChange }) => {
+const ListPropComp: React.FC<ListPropCompProps> = (props) =>
+{
   const [form] = Form.useForm();
-
+  const { id, list = [], onChange } = props
   // 重要：外部 list 变化时同步到表单（比如切换选中组件、从服务端加载等场景）
   React.useEffect(() => {
     form.setFieldsValue({ items: list });
@@ -20,7 +21,7 @@ const ListPropComp: React.FC<ListPropCompProps> = ({ id, list = [], onChange }) 
 
   // 只要表单值变化就实时通知外部更新 redux
   const handleValuesChange = (_: any, allValues: { items: ListItemProps[] }) => {
-    onChange({ list: allValues.items ?? [] });
+    onChange({ ...props, list: allValues.items ?? [] });
   };
 
   return (

@@ -5,7 +5,7 @@ import TextProps from '@/app/editor/components/text/TextProps';
 import { Typography } from 'antd';
 import { useAppDispatch } from '@/store/hooks';
 import { setSelectComponentId } from '@/store/componentSlice';
-
+// packages/client-next/app/editor/components/text/index.tsx
 const { Text } = Typography;
 
 const TextComponent: React.FC<TextProps> = ({

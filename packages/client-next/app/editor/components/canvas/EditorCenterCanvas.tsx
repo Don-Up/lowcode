@@ -20,6 +20,12 @@ import SplitProps from '@/app/editor/components/split/SplitProps';
 import SplitComponent from '@/app/editor/components/split';
 import EmptyProps from '@/app/editor/components/empty/EmptyProps';
 import EmptyComponent from '@/app/editor/components/empty';
+import RichTextComponent from '@/app/editor/components/richtext';
+import RichTextProps from '@/app/editor/components/richtext/RichTextProps';
+import QrCodeComponent from '@/app/editor/components/qrcode';
+import QrCodeProps from '@/app/editor/components/qrcode/QrCodeProps';
+import AlertComponent from '@/app/editor/components/alert';
+import AlertProps from '@/app/editor/components/alert/AlertProps';
 
 export function getComp(comp: Component, isSelected: boolean = false) {
   const commonProps = { ...comp, isSelected }; // Pass isSelected to indicate selection
@@ -45,6 +51,12 @@ export function getComp(comp: Component, isSelected: boolean = false) {
       return <SplitComponent {...(commonProps as SplitProps)} />
     case 'empty':
       return <EmptyComponent {...(commonProps as EmptyProps)} />
+    case 'richtext':
+      return <RichTextComponent {...(commonProps as RichTextProps)} />
+    case 'qrcode':
+      return <QrCodeComponent {...(commonProps as QrCodeProps)} />
+    case 'alert':
+      return <AlertComponent {...(commonProps as AlertProps)} />
   }
   return <></>;
 }

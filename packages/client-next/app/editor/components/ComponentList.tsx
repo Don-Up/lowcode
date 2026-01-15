@@ -29,6 +29,9 @@ import { DefaultCardComponentProps } from '@/app/editor/components/card/CardProp
 import { DefaultListComponentProps } from '@/app/editor/components/list/ListProps';
 import { DefaultSplitComponentProps } from '@/app/editor/components/split/SplitProps';
 import { DefaultEmptyComponentProps } from '@/app/editor/components/empty/EmptyProps';
+import { DefaultRichTextComponentProps } from '@/app/editor/components/richtext/RichTextProps';
+import { DefaultQrCodeComponentProps } from '@/app/editor/components/qrcode/QrCodeProps';
+import { DefaultAlertComponentProps } from '@/app/editor/components/alert/AlertProps';
 
 // 不同组件配置数组
 export const components = [
@@ -68,7 +71,7 @@ export const components = [
     icon: <MinusOutlined />,
   },
   {
-    type: 'richText',
+    type: 'richtext',
     name: '富文本组件',
     icon: <FontColorsOutlined />,
   },
@@ -139,11 +142,21 @@ const EditorComponent: FC<ComponentProps> = ({ icon, name, type }) => {
         break;
       case 'list':
         dispatch(addComponent({ ...DefaultListComponentProps, id: nanoid(8) }));
+        break
       case 'split':
         dispatch(addComponent({ ...DefaultSplitComponentProps, id: nanoid(8) }));
         break;
       case 'empty':
         dispatch(addComponent({ ...DefaultEmptyComponentProps, id: nanoid(8) }));
+        break
+      case 'richtext':
+        dispatch(addComponent({ ...DefaultRichTextComponentProps, id: nanoid(8) }));
+        break
+      case 'qrcode':
+        dispatch(addComponent({ ...DefaultQrCodeComponentProps, id: nanoid(8) }));
+        break
+      case 'alert':
+        dispatch(addComponent({ ...DefaultAlertComponentProps, id: nanoid(8) }));
         break
     }
   }

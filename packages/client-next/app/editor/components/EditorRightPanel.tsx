@@ -12,6 +12,9 @@ import CardPropComp from '@/app/editor/components/card/CardPropComponents';
 import ListPropComp from '@/app/editor/components/list/ListPropComponent';
 import SplitPropComp from '@/app/editor/components/split/SplitPropComponent';
 import EmptyPropComponent from '@/app/editor/components/empty/EmptyPropComponent';
+import RichTextPropComponent from '@/app/editor/components/richtext/RichTextPropComponent';
+import QrCodePropComponent from '@/app/editor/components/qrcode/QrCodePropComponent';
+import AlertPropComponent from '@/app/editor/components/alert/AlertPropComponent';
 
 export default function EditorRightPanel() {
 
@@ -37,6 +40,12 @@ export default function EditorRightPanel() {
         return <SplitPropComp {...selectedComp} onChange={handleCompChange} />;
       case 'empty':
         return <EmptyPropComponent {...selectedComp} onChange={handleCompChange} />;
+      case 'richtext':
+        return <RichTextPropComponent {...selectedComp} onChange={handleCompChange} />;
+      case 'qrcode':
+        return <QrCodePropComponent {...selectedComp} onChange={handleCompChange} />;
+      case 'alert':
+        return <AlertPropComponent  {...selectedComp} onChange={handleCompChange} />;
       default:
         return <></>;
     }

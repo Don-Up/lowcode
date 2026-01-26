@@ -15,6 +15,9 @@ import EmptyPropComponent from '@/app/editor/components/empty/EmptyPropComponent
 import RichTextPropComponent from '@/app/editor/components/richtext/RichTextPropComponent';
 import QrCodePropComponent from '@/app/editor/components/qrcode/QrCodePropComponent';
 import AlertPropComponent from '@/app/editor/components/alert/AlertPropComponent';
+import InputPropComponent from '@/app/editor/components/input/InputPropComponent';
+import TextAreaPropComponent from '@/app/editor/components/textarea/TextAreaPropComponent';
+import RadioPropComp from '@/app/editor/components/radio/RadioPropComponents';
 
 export default function EditorRightPanel() {
 
@@ -46,6 +49,12 @@ export default function EditorRightPanel() {
         return <QrCodePropComponent {...selectedComp} onChange={handleCompChange} />;
       case 'alert':
         return <AlertPropComponent  {...selectedComp} onChange={handleCompChange} />;
+      case 'input':
+        return <InputPropComponent  {...selectedComp} onChange={handleCompChange} />;
+      case 'textarea':
+        return <TextAreaPropComponent  {...selectedComp} onChange={handleCompChange} />;
+      case 'radio':
+        return <RadioPropComp  {...selectedComp} onChange={handleCompChange} />;
       default:
         return <></>;
     }

@@ -26,6 +26,12 @@ import QrCodeComponent from '@/app/editor/components/qrcode';
 import QrCodeProps from '@/app/editor/components/qrcode/QrCodeProps';
 import AlertComponent from '@/app/editor/components/alert';
 import AlertProps from '@/app/editor/components/alert/AlertProps';
+import InputComponent from '@/app/editor/components/input';
+import InputProps from '@/app/editor/components/input/InputProps';
+import TextAreaProps from '@/app/editor/components/textarea/TextAreaProps';
+import TextAreaComponent from '@/app/editor/components/textarea';
+import RadioComponent from '@/app/editor/components/radio';
+import RadioProps from '@/app/editor/components/radio/RadioProps';
 
 export function getComp(comp: Component, isSelected: boolean = false) {
   const commonProps = { ...comp, isSelected }; // Pass isSelected to indicate selection
@@ -39,24 +45,30 @@ export function getComp(comp: Component, isSelected: boolean = false) {
       const imageProps = commonProps as ImageProps;
       return <ImageComponent {...imageProps} />;
     case 'swiper':
-      const swipeProps = commonProps as SwiperProps
+      const swipeProps = commonProps as SwiperProps;
       return <SwiperComponent {...swipeProps} />;
     case 'card':
-      const cardProps =  commonProps as CardProps
-      return <CardComponent {...cardProps} />
+      const cardProps = commonProps as CardProps;
+      return <CardComponent {...cardProps} />;
     case 'list':
-      const listProps = commonProps as ListProps
-      return <ListComponent {...listProps} />
+      const listProps = commonProps as ListProps;
+      return <ListComponent {...listProps} />;
     case 'split':
-      return <SplitComponent {...(commonProps as SplitProps)} />
+      return <SplitComponent {...(commonProps as SplitProps)} />;
     case 'empty':
-      return <EmptyComponent {...(commonProps as EmptyProps)} />
+      return <EmptyComponent {...(commonProps as EmptyProps)} />;
     case 'richtext':
-      return <RichTextComponent {...(commonProps as RichTextProps)} />
+      return <RichTextComponent {...(commonProps as RichTextProps)} />;
     case 'qrcode':
-      return <QrCodeComponent {...(commonProps as QrCodeProps)} />
+      return <QrCodeComponent {...(commonProps as QrCodeProps)} />;
     case 'alert':
-      return <AlertComponent {...(commonProps as AlertProps)} />
+      return <AlertComponent {...(commonProps as AlertProps)} />;
+    case 'input':
+      return <InputComponent {...(commonProps as InputProps)} />;
+    case 'textarea':
+      return <TextAreaComponent {...(commonProps as TextAreaProps)} />;
+    case 'radio':
+      return <RadioComponent {...(commonProps as RadioProps)} />;
   }
   return <></>;
 }

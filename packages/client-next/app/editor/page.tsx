@@ -1,7 +1,7 @@
 import EditorHeader from "./components/EditorHeader";
 import EditorLeftPanel from "./components/EditorLeftPanel";
 import EditorRightPanel from "./components/EditorRightPanel";
-import Canvas from '@/app/editor/components/canvas/EditorCenterCanvas';
+import Canvas from '@/app/editor/components/EditorCenterCanvas';
 
 function Page() {
   return (

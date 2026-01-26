@@ -32,6 +32,9 @@ import { DefaultEmptyComponentProps } from '@/app/editor/components/empty/EmptyP
 import { DefaultRichTextComponentProps } from '@/app/editor/components/richtext/RichTextProps';
 import { DefaultQrCodeComponentProps } from '@/app/editor/components/qrcode/QrCodeProps';
 import { DefaultAlertComponentProps } from '@/app/editor/components/alert/AlertProps';
+import { DefaultInputComponentProps } from '@/app/editor/components/input/InputProps';
+import { DefaultTextAreaComponentProps } from '@/app/editor/components/textarea/TextAreaProps';
+import { DefaultRadioComponentProps } from '@/app/editor/components/radio/RadioProps';
 
 // 不同组件配置数组
 export const components = [
@@ -100,7 +103,7 @@ const componentByUserInput = [
     icon: <EditOutlined />,
   },
   {
-    type: 'textArea',
+    type: 'textarea',
     name: '文本域组件',
     icon: <FormOutlined />,
   },
@@ -157,6 +160,15 @@ const EditorComponent: FC<ComponentProps> = ({ icon, name, type }) => {
         break
       case 'alert':
         dispatch(addComponent({ ...DefaultAlertComponentProps, id: nanoid(8) }));
+        break
+      case 'input':
+        dispatch(addComponent({ ...DefaultInputComponentProps, id: nanoid(8) }));
+        break
+      case 'textarea':
+        dispatch(addComponent({ ...DefaultTextAreaComponentProps, id: nanoid(8) }));
+        break
+      case 'radio':
+        dispatch(addComponent({ ...DefaultRadioComponentProps, id: nanoid(8) }))
         break
     }
   }

@@ -35,6 +35,7 @@ import { DefaultAlertComponentProps } from '@/app/editor/components/alert/AlertP
 import { DefaultInputComponentProps } from '@/app/editor/components/input/InputProps';
 import { DefaultTextAreaComponentProps } from '@/app/editor/components/textarea/TextAreaProps';
 import { DefaultRadioComponentProps } from '@/app/editor/components/radio/RadioProps';
+import { DefaultCheckboxComponentProps } from '@/app/editor/components/checkbox/CheckboxProps';
 
 // 不同组件配置数组
 export const components = [
@@ -169,6 +170,9 @@ const EditorComponent: FC<ComponentProps> = ({ icon, name, type }) => {
         break
       case 'radio':
         dispatch(addComponent({ ...DefaultRadioComponentProps, id: nanoid(8) }))
+        break
+      case 'checkbox':
+        dispatch(addComponent({ ...DefaultCheckboxComponentProps, id: nanoid(8) }))
         break
     }
   }

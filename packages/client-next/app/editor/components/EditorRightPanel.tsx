@@ -18,6 +18,7 @@ import AlertPropComponent from '@/app/editor/components/alert/AlertPropComponent
 import InputPropComponent from '@/app/editor/components/input/InputPropComponent';
 import TextAreaPropComponent from '@/app/editor/components/textarea/TextAreaPropComponent';
 import RadioPropComp from '@/app/editor/components/radio/RadioPropComponents';
+import CheckboxPropComp from '@/app/editor/components/checkbox/CheckboxPropComponent';
 
 export default function EditorRightPanel() {
 
@@ -55,6 +56,8 @@ export default function EditorRightPanel() {
         return <TextAreaPropComponent  {...selectedComp} onChange={handleCompChange} />;
       case 'radio':
         return <RadioPropComp  {...selectedComp} onChange={handleCompChange} />;
+      case 'checkbox':
+        return <CheckboxPropComp  {...selectedComp} onChange={handleCompChange} />;
       default:
         return <></>;
     }

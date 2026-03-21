@@ -33,7 +33,7 @@ const RadioComponent: React.FC<RadioProps> = ({
         value={defaultRadio}
         disabled // 画布中禁用交互，仅预览
       >
-        <Space direction="vertical">
+        <Space orientation="vertical">
           {options.map((opt) => (
             <Radio key={opt.id} value={opt.id}>
               {opt.value || '选项'}

@@ -5,7 +5,7 @@ import * as svgCaptcha from 'svg-captcha';
  */
 @Injectable()
 export class CaptchaTool {
-  async captche() {
+  async captcha() {
     const captcha = svgCaptcha.create({
       size: 4, // 验证码⻓度
       ignoreChars: '0o1i', // 验证码字符中排除 0o1i

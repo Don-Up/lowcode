@@ -32,6 +32,8 @@ import TextAreaProps from '@/app/editor/components/textarea/TextAreaProps';
 import TextAreaComponent from '@/app/editor/components/textarea';
 import RadioComponent from '@/app/editor/components/radio';
 import RadioProps from '@/app/editor/components/radio/RadioProps';
+import CheckboxComponent from '@/app/editor/components/checkbox';
+import CheckboxProps from '@/app/editor/components/checkbox/CheckboxProps';
 
 export function getComp(comp: Component, isSelected: boolean = false) {
   const commonProps = { ...comp, isSelected }; // Pass isSelected to indicate selection
@@ -69,6 +71,8 @@ export function getComp(comp: Component, isSelected: boolean = false) {
       return <TextAreaComponent {...(commonProps as TextAreaProps)} />;
     case 'radio':
       return <RadioComponent {...(commonProps as RadioProps)} />;
+    case 'checkbox':
+      return <CheckboxComponent {...(commonProps as CheckboxProps)} />;
   }
   return <></>;
 }

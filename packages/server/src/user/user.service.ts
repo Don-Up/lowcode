@@ -25,7 +25,7 @@ export class UserService {
   }
 
   async getCaptcha(key: string, type: string) {
-    const svgCaptcha = await this.captchaTool.captche();
+    const svgCaptcha = await this.captchaTool.captcha();
 
     await this.redis.client.set(`${type}:captcha:${key}`, svgCaptcha.text, 'EX', 600);
 

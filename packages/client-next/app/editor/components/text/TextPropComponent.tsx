@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { Form, Input, InputNumber, Select, Switch } from 'antd';
+import { Form, Input, InputNumber, Select, Switch, Divider } from 'antd';
 import { useAppDispatch } from '@/store/hooks';
 import TextProps from '@/app/editor/components/text/TextProps';
 
@@ -18,14 +18,18 @@ const TextPropComp: React.FC<TextPropCompProps> = ({
                                                      textAlign,
                                                      fontWeight,
                                                      disabled,
+                                                     backgroundColor,
+                                                     borderRadius,
+                                                     padding,
+                                                     margin,
                                                      onChange,
                                                    }) => {
   const dispatch = useAppDispatch();
   const [form] = Form.useForm();
 
   useEffect(() => {
-    form.setFieldsValue({ text, color, fontSize, textAlign, fontWeight, disabled });
-  }, [text, color, fontSize, textAlign, fontWeight, disabled]);
+    form.setFieldsValue({ text, color, fontSize, textAlign, fontWeight, disabled, backgroundColor, borderRadius, padding, margin });
+  }, [text, color, fontSize, textAlign, fontWeight, disabled, backgroundColor, borderRadius, padding, margin]);
 
   const handleValuesChange = () => {
     const values = form.getFieldsValue() as TextProps;
@@ -39,21 +43,28 @@ const TextPropComp: React.FC<TextPropCompProps> = ({
       form={form}
       layout="vertical"
       onValuesChange={handleValuesChange}
-      initialValues={{ text, color, fontSize, textAlign, fontWeight, disabled }}
+      initialValues={{ text, color, fontSize, textAlign, fontWeight, disabled, backgroundColor, borderRadius, padding, margin }}
     >
       <div className={'grid grid-cols-2 gap-2 mt-5'}>
         <Form.Item
           label="Text"
           name="text"
           rules={[{ required: true, message: 'Please enter text content.' }]}
+          className="col-span-2"
         >
           <Input placeholder="Enter text" />
         </Form.Item>
         <Form.Item label="Color" name="color">
           <Input type="color" defaultValue="#000000" />
         </Form.Item>
+        <Form.Item label="Background" name="backgroundColor">
+          <Input type="color" defaultValue="#000000" />
+        </Form.Item>
         <Form.Item label="Font Size" name="fontSize">
-          <InputNumber min={10} max={40} placeholder="Enter font size" style={{ width: '100%' }} />
+          <InputNumber min={10} max={200} placeholder="Enter font size" style={{ width: '100%' }} />
+        </Form.Item>
+        <Form.Item label="Border Radius" name="borderRadius">
+          <InputNumber min={0} max={100} placeholder="Enter border radius" style={{ width: '100%' }} />
         </Form.Item>
         <Form.Item label="Text Align" name="textAlign">
           <Select placeholder="Select text alignment">
@@ -68,7 +79,13 @@ const TextPropComp: React.FC<TextPropCompProps> = ({
             <Select.Option value="bold">Bold</Select.Option>
           </Select>
         </Form.Item>
-        <Form.Item label="Disabled" name="disabled" valuePropName="checked">
+        <Form.Item label="Padding" name="padding">
+          <InputNumber min={0} max={100} placeholder="Padding" style={{ width: '100%' }} />
+        </Form.Item>
+        <Form.Item label="Margin" name="margin">
+          <InputNumber min={0} max={100} placeholder="Margin" style={{ width: '100%' }} />
+        </Form.Item>
+        <Form.Item label="Disabled" name="disabled" valuePropName="checked" className="col-span-2">
           <Switch />
         </Form.Item>
       </div>

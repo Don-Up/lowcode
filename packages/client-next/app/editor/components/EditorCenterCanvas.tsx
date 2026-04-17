@@ -33,6 +33,8 @@ import RadioComponent from '@/app/editor/components/radio';
 import RadioProps from '@/app/editor/components/radio/RadioProps';
 import CheckboxComponent from '@/app/editor/components/checkbox';
 import CheckboxProps from '@/app/editor/components/checkbox/CheckboxProps';
+import VideoComponent from '@/app/editor/components/video';
+import VideoProps from '@/app/editor/components/video/VideoProps';
 
 export function getComp(comp: Component, isSelected: boolean = false) {
   const commonProps = { ...comp, isSelected }; // Pass isSelected to indicate selection
@@ -71,6 +73,8 @@ export function getComp(comp: Component, isSelected: boolean = false) {
       return <RadioComponent {...(commonProps as RadioProps)} />;
     case 'checkbox':
       return <CheckboxComponent {...(commonProps as CheckboxProps)} />;
+    case 'video':
+      return <VideoComponent {...(commonProps as VideoProps)} />;
   }
   return <></>;
 }

@@ -36,6 +36,7 @@ import { DefaultInputComponentProps } from '@/app/editor/components/input/InputP
 import { DefaultTextAreaComponentProps } from '@/app/editor/components/textarea/TextAreaProps';
 import { DefaultRadioComponentProps } from '@/app/editor/components/radio/RadioProps';
 import { DefaultCheckboxComponentProps } from '@/app/editor/components/checkbox/CheckboxProps';
+import { DefaultVideoComponentProps } from '@/app/editor/components/video/VideoProps';
 
 // 不同组件配置数组
 export const components = [
@@ -173,6 +174,9 @@ const EditorComponent: FC<ComponentProps> = ({ icon, name, type }) => {
         break
       case 'checkbox':
         dispatch(addComponent({ ...DefaultCheckboxComponentProps, id: nanoid(8) }))
+        break
+      case 'video':
+        dispatch(addComponent({ ...DefaultVideoComponentProps, id: nanoid(8) }))
         break
     }
   }

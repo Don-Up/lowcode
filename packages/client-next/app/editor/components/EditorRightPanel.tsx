@@ -19,6 +19,7 @@ import InputPropComponent from '@/app/editor/components/input/InputPropComponent
 import TextAreaPropComponent from '@/app/editor/components/textarea/TextAreaPropComponent';
 import RadioPropComp from '@/app/editor/components/radio/RadioPropComponents';
 import CheckboxPropComp from '@/app/editor/components/checkbox/CheckboxPropComponent';
+import VideoPropComponent from '@/app/editor/components/video/VideoPropComponent';
 
 export default function EditorRightPanel() {
 
@@ -58,6 +59,8 @@ export default function EditorRightPanel() {
         return <RadioPropComp  {...selectedComp} onChange={handleCompChange} />;
       case 'checkbox':
         return <CheckboxPropComp  {...selectedComp} onChange={handleCompChange} />;
+      case 'video':
+        return <VideoPropComponent {...selectedComp} onChange={handleCompChange} />;
       default:
         return <></>;
     }
@@ -78,7 +81,7 @@ export default function EditorRightPanel() {
       ),
       children: <div className={'overflow-y-auto max-h-[80vh]'}>
         {getPropPropertyComponent()}
-      </div>, // Move the component here
+      </div>,
     },
     {
       key: 'page-fields',
@@ -88,7 +91,7 @@ export default function EditorRightPanel() {
           <span>全局属性</span>
         </>
       ),
-      children: <div>Global properties content here</div>, // Add appropriate content
+      children: <div>Global properties content here</div>,
     },
   ];
 

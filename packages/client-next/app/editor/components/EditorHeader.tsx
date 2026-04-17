@@ -1,15 +1,42 @@
 'use client';
 
-import { Button, Switch } from 'antd';
+import { Button, Switch, message } from 'antd';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { setPreviewMode } from '@/store/componentSlice';
+import { setPreviewMode, saveState, loadState } from '@/store/componentSlice';
 
 const Header = () => {
   const dispatch = useAppDispatch();
-  const { isPreviewMode } = useAppSelector((state) => state.component.present);
+  const { isPreviewMode, components } = useAppSelector((state) => state.component.present);
 
   const handlePreviewToggle = (checked: boolean) => {
     dispatch(setPreviewMode(checked));
+  };
+
+  const handleSaveDraft = () => {
+    // Save current components to localStorage
+    localStorage.setItem('低代码草稿', JSON.stringify(components));
+    message.success('草稿保存成功');
+  };
+
+  const handleLoadDraft = () => {
+    // Load components from localStorage
+    const saved = localStorage.getItem('低代码草稿');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        dispatch(loadState(parsed));
+        message.success('草稿加载成功');
+      } catch {
+        message.error('草稿加载失败');
+      }
+    } else {
+      message.info('没有保存的草稿');
+    }
+  };
+
+  const handlePublish = () => {
+    // TODO: Call API to publish
+    message.info('发布功能待实现');
   };
 
   return (
@@ -20,12 +47,15 @@ const Header = () => {
           <span className="text-sm text-gray-600">预览模式</span>
           <Switch checked={isPreviewMode} onChange={handlePreviewToggle} />
         </div>
-        <button className="px-4 py-1 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors text-sm">
-          草稿
-        </button>
-        <button className="px-4 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition-colors text-sm">
+        <Button size="small" onClick={handleSaveDraft}>
+          保存草稿
+        </Button>
+        <Button size="small" onClick={handleLoadDraft}>
+          加载草稿
+        </Button>
+        <Button size="small" type="primary" onClick={handlePublish}>
           发布
-        </button>
+        </Button>
       </div>
       <div className="flex-1 flex justify-end">后台数据统计 头像</div>
     </div>

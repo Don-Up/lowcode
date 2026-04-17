@@ -1,13 +1,12 @@
 // packages/client-next/app/editor/components/canvas/EditorCenterCanvas.tsx
 'use client';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { clearComponents, swapComponent } from '@/store/componentSlice';
+import { swapComponent } from '@/store/componentSlice';
 import SortableContainer from '@/components/DragSort/SortableContainer';
 import SortableItem from '@/components/DragSort/SortableItem';
 import { Component } from '@/app/editor/components/Model';
 import TextComponent from '@/app/editor/components/text';
 import TextProps from '@/app/editor/components/text/TextProps';
-import { useOnce } from '@/hooks/useOnce';
 import ImageComponent from '@/app/editor/components/image';
 import SwiperComponent from '@/app/editor/components/swiper';
 import SwiperProps from '@/app/editor/components/swiper/SwiperProps';
@@ -37,7 +36,6 @@ import CheckboxProps from '@/app/editor/components/checkbox/CheckboxProps';
 
 export function getComp(comp: Component, isSelected: boolean = false) {
   const commonProps = { ...comp, isSelected }; // Pass isSelected to indicate selection
-  console.log('TEMP', 'here....', commonProps.type);
 
   switch (comp.type) {
     case 'text':
@@ -81,14 +79,7 @@ export default function EditorCenterCanvas() {
 
   const dispatch = useAppDispatch();
 
-  useOnce(() => {
-    console.log('TEMP', 'clearComponents');
-    dispatch((clearComponents()));
-  });
-
   const { components, isPreviewMode, selectedComponentId } = useAppSelector((state) => state.component.present);
-
-  console.log('TEMP', 'components: ' + components.length);
 
   function handleDragEnd(oldIndex: number, newIndex: number) {
     // Swap the component

@@ -27,7 +27,6 @@ const TextComponent: React.FC<TextProps> = ({
   };
 
   function handleClick() {
-    console.log('setSelectComponentId', id);
     dispatch(setSelectComponentId(id));
   }
 

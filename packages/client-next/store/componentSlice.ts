@@ -28,7 +28,6 @@ const compSlice = createSlice({
       state.components = action.payload;
     },
     addComponent: (state: ComponentState, action: PayloadAction<Component>) => {
-      console.log('addComponent', action.payload);
       // state.components.push(action.payload);
       const newComp = action.payload;
       if (newComp.parentId) {

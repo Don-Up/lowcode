@@ -21,8 +21,6 @@ const CardComponent: React.FC<CardProps> = ({
     dispatch(setSelectComponentId(id));
   }
 
-  console.log("TEMP", title, coverImg, description)
-
   return (
     <div className="cursor-pointer hover:bg-gray-100 flex" onClick={handleClick}>
       <Card

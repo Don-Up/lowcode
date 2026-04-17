@@ -1,0 +1,219 @@
+{
+  "editor": {
+    "header": {
+      "title": "小滴低代码平台",
+      "previewMode": "预览模式",
+      "saveDraft": "保存草稿",
+      "loadDraft": "加载草稿",
+      "publish": "发布",
+      "draftSaved": "草稿保存成功",
+      "draftLoaded": "草稿加载成功",
+      "draftLoadFailed": "草稿加载失败",
+      "noDraft": "没有保存的草稿",
+      "publishPending": "发布功能待实现"
+    },
+    "canvas": {
+      "previewModeActive": "预览模式中 - 拖拽和编辑已禁用"
+    },
+    "leftPanel": {
+      "componentList": "组件列表"
+    },
+    "rightPanel": {
+      "componentProperties": "组件属性",
+      "globalProperties": "全局属性"
+    },
+    "global": {
+      "pageName": "页面名称",
+      "pageNamePlaceholder": "请输入页面名称",
+      "pageDesc": "页面描述",
+      "pageDescPlaceholder": "请输入页面描述",
+      "seoTitle": "SEO标题(TDK)",
+      "seoTitlePlaceholder": "标题/描述/关键词（SEO）",
+      "untitled": "未命名页面"
+    }
+  },
+  "components": {
+    "video": "视频组件",
+    "swiper": "轮播组件",
+    "card": "卡片组件",
+    "list": "列表组件",
+    "image": "图片组件",
+    "text": "文本组件",
+    "split": "分割组件",
+    "richtext": "富文本组件",
+    "qrcode": "二维码组件",
+    "empty": "空状态组件",
+    "alert": "警告信息组件",
+    "input": "输入框组件",
+    "textarea": "文本域组件",
+    "radio": "单选框组件",
+    "checkbox": "多选框组件"
+  },
+  "props": {
+    "text": {
+      "text": "文本",
+      "color": "颜色",
+      "background": "背景",
+      "fontSize": "字体大小",
+      "borderRadius": "圆角",
+      "textAlign": "文本对齐",
+      "fontWeight": "字体粗细",
+      "padding": "内边距",
+      "margin": "外边距",
+      "disabled": "禁用",
+      "textPlaceholder": "请输入文本",
+      "fontSizePlaceholder": "请输入字体大小",
+      "borderRadiusPlaceholder": "请输入圆角",
+      "textAlignPlaceholder": "请选择文本对齐",
+      "fontWeightPlaceholder": "请选择字体粗细",
+      "textRequired": "请输入文本内容"
+    },
+    "image": {
+      "src": "图片地址",
+      "height": "高度",
+      "name": "名称",
+      "fillMode": "填充方式",
+      "srcPlaceholder": "请输入图片地址",
+      "heightPlaceholder": "请输入高度",
+      "namePlaceholder": "请输入组件名称",
+      "fillModePlaceholder": "请选择填充方式",
+      "srcRequired": "请输入图片地址"
+    },
+    "swiper": {
+      "interval": "间隔时间",
+      "autoPlay": "自动播放",
+      "showIndicators": "显示指示器",
+      "dotPosition": "指示器位置",
+      "intervalPlaceholder": "请输入间隔时间(毫秒)",
+      "dotPositionPlaceholder": "请选择指示器位置"
+    },
+    "card": {
+      "coverImage": "封面图片",
+      "title": "标题",
+      "description": "描述"
+    },
+    "list": {
+      "title": "标题",
+      "titleLink": "标题链接（可选）",
+      "avatarLink": "头像链接（建议50×50或正方形）",
+      "description": "描述",
+      "addNewItem": "添加新列表项",
+      "titlePlaceholder": "请输入列表项标题",
+      "linkPlaceholder": "https://example.com",
+      "avatarPlaceholder": "https://.../avatar.png",
+      "descPlaceholder": "请输入描述文字...",
+      "titleRequired": "请输入标题"
+    },
+    "split": {
+      "text": "分割线文字（留空则纯分割线）",
+      "dashed": "是否使用虚线",
+      "hint": "提示：当不填写文字时，将显示纯分割线",
+      "textPlaceholder": "例如：更多内容"
+    },
+    "empty": {
+      "customImage": "自定义空状态图片（可选）",
+      "description": "描述文字",
+      "width": "图片宽度（px）",
+      "height": "图片高度（px）",
+      "fillMode": "图片填充方式",
+      "contain": "完整显示（contain）",
+      "cover": "裁剪填充（cover）",
+      "fill": "拉伸填充（fill）",
+      "none": "原始尺寸（none）",
+      "scaleDown": "缩小到合适（scale-down）",
+      "hint": "提示：不填写图片链接将使用Ant Design默认空状态图",
+      "imagePlaceholder": "https://example.com/empty.png",
+      "descPlaceholder": "暂无数据"
+    },
+    "richtext": {
+      "placeholder": "请在富文本输入内容",
+      "inputPlaceholder": "请输入内容..."
+    },
+    "qrcode": {
+      "content": "二维码内容",
+      "bgColor": "二维码背景颜色",
+      "color": "二维码颜色",
+      "errorLevel": "二维码容错率",
+      "size": "二维码大小(px)",
+      "icon": "中间图标(URL，可选)",
+      "iconSize": "图标大小(px)",
+      "recommendColors": "推荐色",
+      "hint": "提示：添加图标时建议将容错率调至H以保证扫描成功率",
+      "contentPlaceholder": "https://xdclass.net或其他链接/文本",
+      "iconPlaceholder": "https://example.com/logo.png"
+    },
+    "alert": {
+      "title": "标题",
+      "type": "类型",
+      "showIcon": "显示图标",
+      "showClose": "显示关闭按钮",
+      "success": "成功(绿色)",
+      "info": "信息(蓝色)",
+      "warning": "警告(黄色)",
+      "error": "错误(红色)",
+      "titleHint": "为空时显示默认提示：请输入文本",
+      "closeHint": "提示：在画布中点击关闭按钮仅为视觉效果，不会真正移除组件",
+      "titlePlaceholder": "请输入文本"
+    },
+    "input": {
+      "title": "默认展示的标题",
+      "defaultText": "默认输入的内容",
+      "placeholder": "占位符",
+      "titleTooltip": "显示在输入框上方的标签文字",
+      "textTooltip": "组件加载时预填的内容（用户可修改）",
+      "placeholderTooltip": "输入框为空时显示的提示文字",
+      "canvasHint": "提示：在画布中输入框为禁用状态，仅用于预览效果",
+      "titlePlaceholder": "默认展示的标题",
+      "textPlaceholder": "默认输入的内容",
+      "inputPlaceholder": "请输入内容......"
+    },
+    "textarea": {
+      "title": "默认展示的标题",
+      "defaultText": "默认输入的内容",
+      "placeholder": "占位符",
+      "titleTooltip": "显示在输入框上方的标签文字",
+      "textTooltip": "组件加载时预填的内容（用户可修改）",
+      "placeholderTooltip": "输入框为空时显示的提示文字",
+      "canvasHint": "提示：在画布中输入框为禁用状态，仅用于预览效果",
+      "titlePlaceholder": "默认展示的标题",
+      "textPlaceholder": "默认输入的内容",
+      "inputPlaceholder": "请输入内容......"
+    },
+    "radio": {
+      "title": "默认展示的标题",
+      "defaultSelected": "默认选择的选项",
+      "optionName": "选项名称",
+      "addNewOption": "添加新选项",
+      "optionNameRequired": "请输入选项名称",
+      "canvasHint": "提示：画布中单选框为禁用状态，仅用于效果预览",
+      "titlePlaceholder": "默认展示的标题",
+      "selectedPlaceholder": "请选择默认选项",
+      "optionPlaceholder": "选项名称",
+      "emptyOption": "（空选项）"
+    },
+    "checkbox": {
+      "title": "默认展示的标题",
+      "defaultSelected": "默认选择的选项（可多选）",
+      "optionName": "选项名称",
+      "addNewOption": "添加新选项",
+      "optionNameRequired": "请输入选项名称",
+      "canvasHint": "提示：画布中多选框为禁用状态，仅用于效果预览",
+      "titlePlaceholder": "默认展示的标题",
+      "selectedPlaceholder": "请选择默认选项（可多选）",
+      "optionPlaceholder": "选项名称",
+      "emptyOption": "（空选项）"
+    },
+    "video": {
+      "url": "视频地址",
+      "poster": "封面图片地址",
+      "autoPlay": "自动播放",
+      "loop": "循环",
+      "muted": "静音",
+      "controls": "控制条",
+      "urlTooltip": "输入视频文件的URL地址",
+      "posterTooltip": "视频封面图（视频未播放时显示）",
+      "urlPlaceholder": "https://example.com/video.mp4",
+      "posterPlaceholder": "https://example.com/poster.jpg"
+    }
+  }
+}

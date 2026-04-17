@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useEffect, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import RichTextProps from '@/app/editor/components/richtext/RichTextProps';
@@ -11,6 +12,7 @@ interface RichTextPropCompProps extends RichTextProps {
 }
 
 const RichTextPropComp: React.FC<RichTextPropCompProps> = (props) => {
+  const { t } = useTranslation();
   const { id, content = '', onChange } = props
   // 使用 useMemo 避免每次渲染都重新创建 modules 配置
   const modules = useMemo(
@@ -39,7 +41,7 @@ const RichTextPropComp: React.FC<RichTextPropCompProps> = (props) => {
   return (
     <div className="mt-5 border rounded overflow-hidden">
       <div className="bg-gray-50 px-3 py-2 text-sm text-gray-600 border-b">
-        请在富文本输入内容
+        {t('props.richtext.placeholder')}
       </div>
 
       <ReactQuill
@@ -47,7 +49,7 @@ const RichTextPropComp: React.FC<RichTextPropCompProps> = (props) => {
         value={content}
         onChange={handleChange}
         modules={modules}
-        placeholder="请输入内容..."
+        placeholder={t('props.richtext.inputPlaceholder')}
         className="min-h-[300px]"
       />
     </div>

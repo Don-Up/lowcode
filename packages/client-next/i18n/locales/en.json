@@ -1,0 +1,219 @@
+{
+  "editor": {
+    "header": {
+      "title": "XiaoDi Low-Code Platform",
+      "previewMode": "Preview Mode",
+      "saveDraft": "Save Draft",
+      "loadDraft": "Load Draft",
+      "publish": "Publish",
+      "draftSaved": "Draft saved successfully",
+      "draftLoaded": "Draft loaded successfully",
+      "draftLoadFailed": "Failed to load draft",
+      "noDraft": "No saved draft",
+      "publishPending": "Publish feature to be implemented"
+    },
+    "canvas": {
+      "previewModeActive": "Preview mode - drag and edit disabled"
+    },
+    "leftPanel": {
+      "componentList": "Component List"
+    },
+    "rightPanel": {
+      "componentProperties": "Component Properties",
+      "globalProperties": "Global Properties"
+    },
+    "global": {
+      "pageName": "Page Name",
+      "pageNamePlaceholder": "Please enter page name",
+      "pageDesc": "Page Description",
+      "pageDescPlaceholder": "Please enter page description",
+      "seoTitle": "SEO Title (TDK)",
+      "seoTitlePlaceholder": "Title/Description/Keywords (SEO)",
+      "untitled": "Untitled Page"
+    }
+  },
+  "components": {
+    "video": "Video Component",
+    "swiper": "Swiper Component",
+    "card": "Card Component",
+    "list": "List Component",
+    "image": "Image Component",
+    "text": "Text Component",
+    "split": "Split Component",
+    "richtext": "Rich Text Component",
+    "qrcode": "QR Code Component",
+    "empty": "Empty State Component",
+    "alert": "Alert Component",
+    "input": "Input Component",
+    "textarea": "Textarea Component",
+    "radio": "Radio Component",
+    "checkbox": "Checkbox Component"
+  },
+  "props": {
+    "text": {
+      "text": "Text",
+      "color": "Color",
+      "background": "Background",
+      "fontSize": "Font Size",
+      "borderRadius": "Border Radius",
+      "textAlign": "Text Align",
+      "fontWeight": "Font Weight",
+      "padding": "Padding",
+      "margin": "Margin",
+      "disabled": "Disabled",
+      "textPlaceholder": "Enter text",
+      "fontSizePlaceholder": "Enter font size",
+      "borderRadiusPlaceholder": "Enter border radius",
+      "textAlignPlaceholder": "Select text alignment",
+      "fontWeightPlaceholder": "Select font weight",
+      "textRequired": "Please enter text content"
+    },
+    "image": {
+      "src": "Image Source",
+      "height": "Height",
+      "name": "Name",
+      "fillMode": "Fill Mode",
+      "srcPlaceholder": "Enter image URL",
+      "heightPlaceholder": "Enter height",
+      "namePlaceholder": "Enter component name",
+      "fillModePlaceholder": "Select fill mode",
+      "srcRequired": "Please enter image URL"
+    },
+    "swiper": {
+      "interval": "Interval",
+      "autoPlay": "Auto Play",
+      "showIndicators": "Show Indicators",
+      "dotPosition": "Dot Position",
+      "intervalPlaceholder": "Enter interval (ms)",
+      "dotPositionPlaceholder": "Select dot position"
+    },
+    "card": {
+      "coverImage": "Cover Image",
+      "title": "Title",
+      "description": "Description"
+    },
+    "list": {
+      "title": "Title",
+      "titleLink": "Title Link (optional)",
+      "avatarLink": "Avatar Link (recommend 50x50 or square)",
+      "description": "Description",
+      "addNewItem": "Add New List Item",
+      "titlePlaceholder": "Enter list item title",
+      "linkPlaceholder": "https://example.com",
+      "avatarPlaceholder": "https://.../avatar.png",
+      "descPlaceholder": "Enter description text...",
+      "titleRequired": "Please enter title"
+    },
+    "split": {
+      "text": "Split Line Text (leave empty for plain line)",
+      "dashed": "Use Dashed Line",
+      "hint": "Hint: Plain split line will be shown when text is empty",
+      "textPlaceholder": "e.g., More content"
+    },
+    "empty": {
+      "customImage": "Custom Empty State Image (optional)",
+      "description": "Description Text",
+      "width": "Image Width (px)",
+      "height": "Image Height (px)",
+      "fillMode": "Image Fill Mode",
+      "contain": "Contain (contain)",
+      "cover": "Cover (cover)",
+      "fill": "Fill (fill)",
+      "none": "None (none)",
+      "scaleDown": "Scale Down (scale-down)",
+      "hint": "Hint: Ant Design default empty state image will be used if no image link is provided",
+      "imagePlaceholder": "https://example.com/empty.png",
+      "descPlaceholder": "No Data"
+    },
+    "richtext": {
+      "placeholder": "Please enter content in rich text",
+      "inputPlaceholder": "Please enter content..."
+    },
+    "qrcode": {
+      "content": "QR Code Content",
+      "bgColor": "QR Code Background Color",
+      "color": "QR Code Color",
+      "errorLevel": "QR Code Error Level",
+      "size": "QR Code Size (px)",
+      "icon": "Center Icon (URL, optional)",
+      "iconSize": "Icon Size (px)",
+      "recommendColors": "Recommended Colors",
+      "hint": "Hint: It is recommended to set error level to H when adding an icon to ensure scanning success rate",
+      "contentPlaceholder": "https://xdclass.net or other link/text",
+      "iconPlaceholder": "https://example.com/logo.png"
+    },
+    "alert": {
+      "title": "Title",
+      "type": "Type",
+      "showIcon": "Show Icon",
+      "showClose": "Show Close Button",
+      "success": "Success (Green)",
+      "info": "Info (Blue)",
+      "warning": "Warning (Yellow)",
+      "error": "Error (Red)",
+      "titleHint": "Leave empty to show default: Please enter text",
+      "closeHint": "Hint: Clicking the close button on the canvas is only for visual effect and will not actually remove the component",
+      "titlePlaceholder": "Please enter text"
+    },
+    "input": {
+      "title": "Default Title",
+      "defaultText": "Default Input Content",
+      "placeholder": "Placeholder",
+      "titleTooltip": "Label text displayed above the input",
+      "textTooltip": "Pre-filled content when component loads (user can modify)",
+      "placeholderTooltip": "Hint text when input is empty",
+      "canvasHint": "Hint: Input on canvas is disabled, only for preview effect",
+      "titlePlaceholder": "Default title",
+      "textPlaceholder": "Default input content",
+      "inputPlaceholder": "Please enter content..."
+    },
+    "textarea": {
+      "title": "Default Title",
+      "defaultText": "Default Input Content",
+      "placeholder": "Placeholder",
+      "titleTooltip": "Label text displayed above the input",
+      "textTooltip": "Pre-filled content when component loads (user can modify)",
+      "placeholderTooltip": "Hint text when input is empty",
+      "canvasHint": "Hint: Input on canvas is disabled, only for preview effect",
+      "titlePlaceholder": "Default title",
+      "textPlaceholder": "Default input content",
+      "inputPlaceholder": "Please enter content..."
+    },
+    "radio": {
+      "title": "Default Title",
+      "defaultSelected": "Default Selected Option",
+      "optionName": "Option Name",
+      "addNewOption": "Add New Option",
+      "optionNameRequired": "Please enter option name",
+      "canvasHint": "Hint: Radio buttons on canvas are disabled, only for effect preview",
+      "titlePlaceholder": "Default title",
+      "selectedPlaceholder": "Please select default option",
+      "optionPlaceholder": "Option name",
+      "emptyOption": "(Empty Option)"
+    },
+    "checkbox": {
+      "title": "Default Title",
+      "defaultSelected": "Default Selected Options (multiple)",
+      "optionName": "Option Name",
+      "addNewOption": "Add New Option",
+      "optionNameRequired": "Please enter option name",
+      "canvasHint": "Hint: Checkboxes on canvas are disabled, only for effect preview",
+      "titlePlaceholder": "Default title",
+      "selectedPlaceholder": "Please select default options (multiple)",
+      "optionPlaceholder": "Option name",
+      "emptyOption": "(Empty Option)"
+    },
+    "video": {
+      "url": "Video URL",
+      "poster": "Poster Image URL",
+      "autoPlay": "Auto Play",
+      "loop": "Loop",
+      "muted": "Muted",
+      "controls": "Controls",
+      "urlTooltip": "Enter video file URL address",
+      "posterTooltip": "Video cover image (shown when video is not playing)",
+      "urlPlaceholder": "https://example.com/video.mp4",
+      "posterPlaceholder": "https://example.com/poster.jpg"
+    }
+  }
+}

@@ -19,6 +19,7 @@ import {
 } from '@ant-design/icons';
 import { Divider } from 'antd';
 import type { FC, ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from '@/store/hooks';
 import { addComponent } from '@/store/componentSlice';
 import { DefaultTextComponentProps } from '@/app/editor/components/text/TextProps';
@@ -42,57 +43,57 @@ import { DefaultVideoComponentProps } from '@/app/editor/components/video/VideoP
 export const components = [
   {
     type: 'video',
-    name: '视频组件',
+    nameKey: 'components.video',
     icon: <PlaySquareOutlined />,
   },
   {
     type: 'swiper',
-    name: '轮播组件',
+    nameKey: 'components.swiper',
     icon: <SplitCellsOutlined />,
   },
   {
     type: 'card',
-    name: '卡片组件',
+    nameKey: 'components.card',
     icon: <CreditCardOutlined />,
   },
   {
     type: 'list',
-    name: '列表组件',
+    nameKey: 'components.list',
     icon: <UnorderedListOutlined />,
   },
   {
     type: 'image',
-    name: '图片组件',
+    nameKey: 'components.image',
     icon: <FundViewOutlined />,
   },
   {
     type: 'text',
-    name: '文本组件',
+    nameKey: 'components.text',
     icon: <FontSizeOutlined />,
   },
   {
     type: 'split',
-    name: '分割组件',
+    nameKey: 'components.split',
     icon: <MinusOutlined />,
   },
   {
     type: 'richtext',
-    name: '富文本组件',
+    nameKey: 'components.richtext',
     icon: <FontColorsOutlined />,
   },
   {
     type: 'qrcode',
-    name: '二维码组件',
+    nameKey: 'components.qrcode',
     icon: <img src={'/xdclass.net.svg'} className="w-[12px] h-[12px]" />,
   },
   {
     type: 'empty',
-    name: '空状态组件',
+    nameKey: 'components.empty',
     icon: <ExpandOutlined />,
   },
   {
     type: 'alert',
-    name: '警告信息组件',
+    nameKey: 'components.alert',
     icon: <WarningOutlined />,
   },
 ];
@@ -101,34 +102,35 @@ export const components = [
 const componentByUserInput = [
   {
     type: 'input',
-    name: '输入框组件',
+    nameKey: 'components.input',
     icon: <EditOutlined />,
   },
   {
     type: 'textarea',
-    name: '文本域组件',
+    nameKey: 'components.textarea',
     icon: <FormOutlined />,
   },
   {
     type: 'radio',
-    name: '单选框组件',
+    nameKey: 'components.radio',
     icon: <CheckCircleOutlined />,
   },
   {
     type: 'checkbox',
-    name: '多选框组件',
+    nameKey: 'components.checkbox',
     icon: <CheckSquareOutlined />,
   },
 ];
 
 interface ComponentProps {
-  name: string;
+  nameKey: string;
   icon: ReactNode;
   type: string;
 }
 
 // 公共样式组件
-const EditorComponent: FC<ComponentProps> = ({ icon, name, type }) => {
+const EditorComponent: FC<ComponentProps> = ({ icon, nameKey, type }) => {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   function handleClick() {
@@ -187,7 +189,7 @@ const EditorComponent: FC<ComponentProps> = ({ icon, name, type }) => {
       className="border py-2 pl-2 w-full flex items-center gap-1 text-xs cursor-pointer select-none hover:border-blue-500"
     >
       {icon}
-      <span>{name}</span>
+      <span>{t(nameKey)}</span>
     </div>
   );
 };

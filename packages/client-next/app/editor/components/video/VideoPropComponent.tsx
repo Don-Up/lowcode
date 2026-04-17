@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { Form, Input, Switch } from 'antd';
+import { useTranslation } from 'react-i18next';
 import VideoProps from '@/app/editor/components/video/VideoProps';
 
 interface VideoPropCompProps extends VideoProps {
@@ -18,6 +19,7 @@ const VideoPropComp: React.FC<VideoPropCompProps> = ({
                                                        poster,
                                                        onChange,
                                                      }) => {
+  const { t } = useTranslation();
   const [form] = Form.useForm();
 
   useEffect(() => {
@@ -45,35 +47,35 @@ const VideoPropComp: React.FC<VideoPropCompProps> = ({
     >
       <div className="grid grid-cols-1 gap-4">
         <Form.Item
-          label="Video URL"
+          label={t('props.video.url')}
           name="url"
-          tooltip="输入视频文件的URL地址"
+          tooltip={t('props.video.urlTooltip')}
         >
-          <Input placeholder="https://example.com/video.mp4" allowClear />
+          <Input placeholder={t('props.video.urlPlaceholder')} allowClear />
         </Form.Item>
 
         <Form.Item
-          label="Poster Image URL"
+          label={t('props.video.poster')}
           name="poster"
-          tooltip="视频封面图（视频未播放时显示）"
+          tooltip={t('props.video.posterTooltip')}
         >
-          <Input placeholder="https://example.com/poster.jpg" allowClear />
+          <Input placeholder={t('props.video.posterPlaceholder')} allowClear />
         </Form.Item>
 
         <div className="grid grid-cols-2 gap-2">
-          <Form.Item label="Auto Play" name="autoPlay" valuePropName="checked">
+          <Form.Item label={t('props.video.autoPlay')} name="autoPlay" valuePropName="checked">
             <Switch />
           </Form.Item>
 
-          <Form.Item label="Loop" name="loop" valuePropName="checked">
+          <Form.Item label={t('props.video.loop')} name="loop" valuePropName="checked">
             <Switch />
           </Form.Item>
 
-          <Form.Item label="Muted" name="muted" valuePropName="checked">
+          <Form.Item label={t('props.video.muted')} name="muted" valuePropName="checked">
             <Switch />
           </Form.Item>
 
-          <Form.Item label="Controls" name="controls" valuePropName="checked">
+          <Form.Item label={t('props.video.controls')} name="controls" valuePropName="checked">
             <Switch />
           </Form.Item>
         </div>

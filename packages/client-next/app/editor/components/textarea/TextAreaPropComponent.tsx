@@ -3,6 +3,7 @@
 
 import React, { useEffect } from 'react';
 import { Form } from 'antd';
+import { useTranslation } from 'react-i18next';
 import TextAreaProps from '@/app/editor/components/textarea/TextAreaProps';
 import TextArea from 'antd/es/input/TextArea';
 
@@ -17,15 +18,16 @@ const TextAreaPropComp: React.FC<TextAreaPropCompProps> = ({
                                                        placeholder,
                                                        onChange,
                                                      }) => {
+  const { t } = useTranslation();
   const [form] = Form.useForm();
 
   useEffect(() => {
     form.setFieldsValue({
-      title: title || '默认展示的标题',
+      title: title || t('props.textarea.titlePlaceholder'),
       text: text || '',
-      placeholder: placeholder || '请输入内容......',
+      placeholder: placeholder || t('props.textarea.inputPlaceholder'),
     });
-  }, [title, text, placeholder, form]);
+  }, [title, text, placeholder, form, t]);
 
   const handleValuesChange = () => {
     const values = form.getFieldsValue() as TextAreaProps;
@@ -42,36 +44,33 @@ const TextAreaPropComp: React.FC<TextAreaPropCompProps> = ({
       <div className="grid grid-cols-1 gap-4">
         {/* 默认展示的标题 */}
         <Form.Item
-          label="默认展示的标题"
+          label={t('props.textarea.title')}
           name="title"
-          initialValue={title}
-          tooltip="显示在输入框上方的标签文字"
+          tooltip={t('props.textarea.titleTooltip')}
         >
-          <TextArea placeholder="默认展示的标题" allowClear />
+          <TextArea placeholder={t('props.textarea.titlePlaceholder')} allowClear />
         </Form.Item>
 
         {/* 默认输入的内容 */}
         <Form.Item
-          label="默认输入的内容"
+          label={t('props.textarea.defaultText')}
           name="text"
-          initialValue={text}
-          tooltip="组件加载时预填的内容（用户可修改）"
+          tooltip={t('props.textarea.textTooltip')}
         >
-          <TextArea placeholder="默认输入的内容" allowClear />
+          <TextArea placeholder={t('props.textarea.textPlaceholder')} allowClear />
         </Form.Item>
 
         {/* 占位符 */}
         <Form.Item
-          label="占位符"
+          label={t('props.textarea.placeholder')}
           name="placeholder"
-          initialValue={placeholder}
-          tooltip="输入框为空时显示的提示文字"
+          tooltip={t('props.textarea.placeholderTooltip')}
         >
-          <TextArea placeholder="请输入内容......" allowClear />
+          <TextArea placeholder={t('props.textarea.inputPlaceholder')} allowClear />
         </Form.Item>
 
         <div className="text-xs text-gray-500 mt-2">
-          提示：在画布中输入框为禁用状态，仅用于预览效果
+          {t('props.textarea.canvasHint')}
         </div>
       </div>
     </Form>

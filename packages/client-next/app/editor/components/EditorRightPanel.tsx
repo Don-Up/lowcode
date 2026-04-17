@@ -2,6 +2,7 @@
 'use client';
 import { Tabs } from 'antd';
 import { AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import TextPropComp from '@/app/editor/components/text/TextPropComponent';
 import ImagePropComp from '@/app/editor/components/image/ImagePropComponent';
@@ -23,7 +24,7 @@ import VideoPropComponent from '@/app/editor/components/video/VideoPropComponent
 import GlobalPropComponent from '@/app/editor/components/GlobalPropComponent';
 
 export default function EditorRightPanel() {
-
+  const { t } = useTranslation();
   const { selectedComponentId, components } = useAppSelector((state) => state.component.present);
   const dispatch = useAppDispatch();
   const selectedComp = selectedComponentId && components.find(item => item.id === selectedComponentId);
@@ -77,7 +78,7 @@ export default function EditorRightPanel() {
       label: (
         <>
           <AppstoreOutlined />
-          <span>组件属性</span>
+          <span>{t('editor.rightPanel.componentProperties')}</span>
         </>
       ),
       children: <div className={'overflow-y-auto max-h-[80vh]'}>
@@ -89,7 +90,7 @@ export default function EditorRightPanel() {
       label: (
         <>
           <SettingOutlined />
-          <span>全局属性</span>
+          <span>{t('editor.rightPanel.globalProperties')}</span>
         </>
       ),
       children: <GlobalPropComponent />,

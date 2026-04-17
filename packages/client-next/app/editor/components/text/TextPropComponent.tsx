@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { Form, Input, InputNumber, Select, Switch, Divider } from 'antd';
-import { useAppDispatch } from '@/store/hooks';
+import { Form, Input, InputNumber, Select, Switch } from 'antd';
+import { useTranslation } from 'react-i18next';
 import TextProps from '@/app/editor/components/text/TextProps';
 
 
@@ -24,7 +24,7 @@ const TextPropComp: React.FC<TextPropCompProps> = ({
                                                      margin,
                                                      onChange,
                                                    }) => {
-  const dispatch = useAppDispatch();
+  const { t } = useTranslation();
   const [form] = Form.useForm();
 
   useEffect(() => {
@@ -47,45 +47,45 @@ const TextPropComp: React.FC<TextPropCompProps> = ({
     >
       <div className={'grid grid-cols-2 gap-2 mt-5'}>
         <Form.Item
-          label="Text"
+          label={t('props.text.text')}
           name="text"
-          rules={[{ required: true, message: 'Please enter text content.' }]}
+          rules={[{ required: true, message: t('props.text.textRequired') }]}
           className="col-span-2"
         >
-          <Input placeholder="Enter text" />
+          <Input placeholder={t('props.text.textPlaceholder')} />
         </Form.Item>
-        <Form.Item label="Color" name="color">
+        <Form.Item label={t('props.text.color')} name="color">
           <Input type="color" defaultValue="#000000" />
         </Form.Item>
-        <Form.Item label="Background" name="backgroundColor">
+        <Form.Item label={t('props.text.background')} name="backgroundColor">
           <Input type="color" defaultValue="#000000" />
         </Form.Item>
-        <Form.Item label="Font Size" name="fontSize">
-          <InputNumber min={10} max={200} placeholder="Enter font size" style={{ width: '100%' }} />
+        <Form.Item label={t('props.text.fontSize')} name="fontSize">
+          <InputNumber min={10} max={200} placeholder={t('props.text.fontSizePlaceholder')} style={{ width: '100%' }} />
         </Form.Item>
-        <Form.Item label="Border Radius" name="borderRadius">
-          <InputNumber min={0} max={100} placeholder="Enter border radius" style={{ width: '100%' }} />
+        <Form.Item label={t('props.text.borderRadius')} name="borderRadius">
+          <InputNumber min={0} max={100} placeholder={t('props.text.borderRadiusPlaceholder')} style={{ width: '100%' }} />
         </Form.Item>
-        <Form.Item label="Text Align" name="textAlign">
-          <Select placeholder="Select text alignment">
+        <Form.Item label={t('props.text.textAlign')} name="textAlign">
+          <Select placeholder={t('props.text.textAlignPlaceholder')}>
             <Select.Option value="left">Left</Select.Option>
             <Select.Option value="center">Center</Select.Option>
             <Select.Option value="right">Right</Select.Option>
           </Select>
         </Form.Item>
-        <Form.Item label="Font Weight" name="fontWeight">
-          <Select placeholder="Select font weight">
+        <Form.Item label={t('props.text.fontWeight')} name="fontWeight">
+          <Select placeholder={t('props.text.fontWeightPlaceholder')}>
             <Select.Option value="normal">Normal</Select.Option>
             <Select.Option value="bold">Bold</Select.Option>
           </Select>
         </Form.Item>
-        <Form.Item label="Padding" name="padding">
-          <InputNumber min={0} max={100} placeholder="Padding" style={{ width: '100%' }} />
+        <Form.Item label={t('props.text.padding')} name="padding">
+          <InputNumber min={0} max={100} style={{ width: '100%' }} />
         </Form.Item>
-        <Form.Item label="Margin" name="margin">
-          <InputNumber min={0} max={100} placeholder="Margin" style={{ width: '100%' }} />
+        <Form.Item label={t('props.text.margin')} name="margin">
+          <InputNumber min={0} max={100} style={{ width: '100%' }} />
         </Form.Item>
-        <Form.Item label="Disabled" name="disabled" valuePropName="checked" className="col-span-2">
+        <Form.Item label={t('props.text.disabled')} name="disabled" valuePropName="checked" className="col-span-2">
           <Switch />
         </Form.Item>
       </div>

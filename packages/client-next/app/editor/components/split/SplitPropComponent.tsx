@@ -3,6 +3,7 @@
 
 import React, { useEffect } from 'react';
 import { Form, Input, Switch, Select } from 'antd';
+import { useTranslation } from 'react-i18next';
 import SplitProps from '@/app/editor/components/split/SplitProps';
 
 interface SplitPropCompProps extends SplitProps {
@@ -15,6 +16,7 @@ const SplitPropComp: React.FC<SplitPropCompProps> = ({
                                                        dashed,
                                                        onChange,
                                                      }) => {
+  const { t } = useTranslation();
   const [form] = Form.useForm();
 
   // 当外部 props 变化时同步到表单（切换选中组件时很重要）
@@ -40,16 +42,16 @@ const SplitPropComp: React.FC<SplitPropCompProps> = ({
       <div className="grid grid-cols-1 gap-4">
         {/* 分割线文字（可选） */}
         <Form.Item
-          label="分割线文字（留空则纯分割线）"
+          label={t('props.split.text')}
           name="text"
           initialValue={text}
         >
-          <Input placeholder="例如：更多内容" allowClear />
+          <Input placeholder={t('props.split.textPlaceholder')} allowClear />
         </Form.Item>
 
         {/* 是否虚线 */}
         <Form.Item
-          label="是否使用虚线"
+          label={t('props.split.dashed')}
           name="dashed"
           valuePropName="checked"
           initialValue={dashed}
@@ -59,7 +61,7 @@ const SplitPropComp: React.FC<SplitPropCompProps> = ({
 
         {/* 小提示 */}
         <div className="text-xs text-gray-500 mt-2">
-          提示：当不填写文字时，将显示纯分割线
+          {t('props.split.hint')}
         </div>
       </div>
     </Form>

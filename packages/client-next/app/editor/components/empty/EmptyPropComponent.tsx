@@ -3,6 +3,7 @@
 
 import React, { useEffect } from 'react';
 import { Form, Input, InputNumber, Select } from 'antd';
+import { useTranslation } from 'react-i18next';
 import EmptyProps from '@/app/editor/components/empty/EmptyProps';
 
 interface EmptyPropCompProps extends EmptyProps {
@@ -18,6 +19,7 @@ const EmptyPropComp: React.FC<EmptyPropCompProps> = ({
                                                        imageObjectFit,
                                                        onChange,
                                                      }) => {
+  const { t } = useTranslation();
   const [form] = Form.useForm();
 
   // 同步外部 props 到表单（切换选中组件时使用）
@@ -46,31 +48,31 @@ const EmptyPropComp: React.FC<EmptyPropCompProps> = ({
       <div className="grid grid-cols-1 gap-4">
         {/* 自定义空状态图片 */}
         <Form.Item
-          label="自定义空状态图片（可选）"
+          label={t('props.empty.customImage')}
           name="image"
           initialValue={image}
         >
           <Input
-            placeholder="https://example.com/empty.png"
+            placeholder={t('props.empty.imagePlaceholder')}
             allowClear
           />
         </Form.Item>
 
         {/* 描述文字 */}
         <Form.Item
-          label="描述文字"
+          label={t('props.empty.description')}
           name="description"
           initialValue={description}
         >
           <Input
-            placeholder="暂无数据 / No Data"
+            placeholder={t('props.empty.descPlaceholder')}
             allowClear
           />
         </Form.Item>
 
         {/* 图片尺寸 - 宽度 */}
         <Form.Item
-          label="图片宽度（px）"
+          label={t('props.empty.width')}
           name="imageWidth"
           initialValue={imageWidth}
         >
@@ -79,7 +81,7 @@ const EmptyPropComp: React.FC<EmptyPropCompProps> = ({
 
         {/* 图片尺寸 - 高度 */}
         <Form.Item
-          label="图片高度（px）"
+          label={t('props.empty.height')}
           name="imageHeight"
           initialValue={imageHeight}
         >
@@ -88,23 +90,23 @@ const EmptyPropComp: React.FC<EmptyPropCompProps> = ({
 
         {/* 图片填充方式 */}
         <Form.Item
-          label="图片填充方式"
+          label={t('props.empty.fillMode')}
           name="imageObjectFit"
           initialValue={imageObjectFit}
         >
           <Select
             options={[
-              { value: 'contain', label: '完整显示（contain）' },
-              { value: 'cover', label: '裁剪填充（cover）' },
-              { value: 'fill', label: '拉伸填充（fill）' },
-              { value: 'none', label: '原始尺寸（none）' },
-              { value: 'scale-down', label: '缩小到合适（scale-down）' },
+              { value: 'contain', label: t('props.empty.contain') },
+              { value: 'cover', label: t('props.empty.cover') },
+              { value: 'fill', label: t('props.empty.fill') },
+              { value: 'none', label: t('props.empty.none') },
+              { value: 'scale-down', label: t('props.empty.scaleDown') },
             ]}
           />
         </Form.Item>
 
         <div className="text-xs text-gray-500 mt-2">
-          提示：不填写图片链接将使用 Ant Design 默认空状态图
+          {t('props.empty.hint')}
         </div>
       </div>
     </Form>

@@ -4,6 +4,7 @@
 import React, { useEffect } from 'react';
 import { Button, Form, Input, Select, Space } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
 import RadioProps from '@/app/editor/components/radio/RadioProps';
 import { nanoid } from 'nanoid';
 
@@ -11,18 +12,19 @@ interface RadioPropCompProps extends RadioProps {
   onChange: (values: RadioProps) => void;
 }
 
-const defaultOption = { id: nanoid(6), value: '选项1' };
+const defaultOption = { id: nanoid(6), value: 'Option 1' };
 
 const RadioPropComp: React.FC<RadioPropCompProps> = ({
                                                        id, title, defaultRadio, options = [], onChange,
                                                      }) => {
+  const { t } = useTranslation();
   const [form] = Form.useForm();
 
   const handleAddOption = () => {
     form.setFieldsValue({
       options: [
         ...(form.getFieldValue('options') || []),
-        { id: nanoid(6), value: `选项${(form.getFieldValue('options') || []).length + 1}` },
+        { id: nanoid(6), value: `Option ${(form.getFieldValue('options') || []).length + 1}` },
       ],
     });
   };
@@ -35,11 +37,11 @@ const RadioPropComp: React.FC<RadioPropCompProps> = ({
 
   useEffect(() => {
     form.setFieldsValue({
-      title: title || '默认展示的标题',
+      title: title || t('props.radio.titlePlaceholder'),
       defaultRadio: defaultRadio || (options[0]?.id || ''),
       options: options.length > 0 ? options : [defaultOption],
     });
-  }, [title, defaultRadio, options, form]);
+  }, [title, defaultRadio, options, form, t]);
 
   const handleValuesChange = () => {
     const values = form.getFieldsValue() as RadioProps;
@@ -63,29 +65,27 @@ const RadioPropComp: React.FC<RadioPropCompProps> = ({
       <div className="grid grid-cols-1 gap-4">
         {/* 默认展示的标题 */}
         <Form.Item
-          label="默认展示的标题"
+          label={t('props.radio.title')}
           name="title"
-          initialValue={title}
         >
-          <Input placeholder="默认展示的标题" allowClear />
+          <Input placeholder={t('props.radio.titlePlaceholder')} allowClear />
         </Form.Item>
 
         {/* 默认选中的选项 */}
         <Form.Item
-          label="默认选择的选项"
+          label={t('props.radio.defaultSelected')}
           name="defaultRadio"
-          initialValue={defaultRadio}
         >
           <Form.Item noStyle shouldUpdate>
             {() => {
               const currentOptions = form.getFieldValue('options') || [];
               return (
                 <Select
-                  placeholder="请选择默认选项"
+                  placeholder={t('props.radio.selectedPlaceholder')}
                   allowClear
                   options={currentOptions.map((opt: any) => ({
                     value: opt.id,
-                    label: opt.value || '（空选项）',
+                    label: opt.value || t('props.radio.emptyOption'),
                   }))}
                 />
               );
@@ -110,10 +110,10 @@ const RadioPropComp: React.FC<RadioPropCompProps> = ({
                     <Form.Item
                       {...restField}
                       name={[name, 'value']}
-                      label="选项名称"
-                      rules={[{ required: true, message: '请输入选项名称' }]}
+                      label={t('props.radio.optionName')}
+                      rules={[{ required: true, message: t('props.radio.optionNameRequired') }]}
                     >
-                      <Input placeholder="选项名称" allowClear />
+                      <Input placeholder={t('props.radio.optionPlaceholder')} allowClear />
                     </Form.Item>
 
                     <Form.Item {...restField} name={[name, 'id']} noStyle>
@@ -130,7 +130,7 @@ const RadioPropComp: React.FC<RadioPropCompProps> = ({
                   block
                   icon={<PlusOutlined />}
                 >
-                  添加新选项
+                  {t('props.radio.addNewOption')}
                 </Button>
               </Form.Item>
             </>
@@ -138,7 +138,7 @@ const RadioPropComp: React.FC<RadioPropCompProps> = ({
         </Form.List>
 
         <div className="text-xs text-gray-500 mt-2">
-          提示：画布中单选框为禁用状态，仅用于效果预览
+          {t('props.radio.canvasHint')}
         </div>
       </div>
     </Form>

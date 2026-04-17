@@ -4,6 +4,7 @@
 import React from 'react';
 import { Form, Input, Button, Space, Avatar, Divider } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
 import ListProps, { DefaultListItemComponentProps, ListItemProps } from '@/app/editor/components/list/ListProps';
 
 interface ListPropCompProps extends ListProps {
@@ -12,6 +13,7 @@ interface ListPropCompProps extends ListProps {
 
 const ListPropComp: React.FC<ListPropCompProps> = (props) =>
 {
+  const { t } = useTranslation();
   const [form] = Form.useForm();
   const { id, list = [], onChange } = props
   // 重要：外部 list 变化时同步到表单（比如切换选中组件、从服务端加载等场景）
@@ -61,38 +63,38 @@ const ListPropComp: React.FC<ListPropCompProps> = (props) =>
                       <Form.Item
                         {...restField}
                         name={[name, 'title']}
-                        label="标题"
-                        rules={[{ required: true, message: '请输入标题' }]}
+                        label={t('props.list.title')}
+                        rules={[{ required: true, message: t('props.list.titleRequired') }]}
                       >
-                        <Input placeholder="请输入列表项标题" allowClear />
+                        <Input placeholder={t('props.list.titlePlaceholder')} allowClear />
                       </Form.Item>
 
                       {/* 标题跳转链接 */}
                       <Form.Item
                         {...restField}
                         name={[name, 'titleLink']}
-                        label="标题链接（可选）"
+                        label={t('props.list.titleLink')}
                       >
-                        <Input placeholder="https://example.com" allowClear />
+                        <Input placeholder={t('props.list.linkPlaceholder')} allowClear />
                       </Form.Item>
 
                       {/* 头像链接 */}
                       <Form.Item
                         {...restField}
                         name={[name, 'avatar']}
-                        label="头像链接（建议 50×50 或正方形）"
+                        label={t('props.list.avatarLink')}
                       >
-                        <Input placeholder="https://.../avatar.png" allowClear />
+                        <Input placeholder={t('props.list.avatarPlaceholder')} allowClear />
                       </Form.Item>
 
                       {/* 描述 */}
                       <Form.Item
                         {...restField}
                         name={[name, 'description']}
-                        label="描述"
+                        label={t('props.list.description')}
                       >
                         <Input.TextArea
-                          placeholder="请输入描述文字..."
+                          placeholder={t('props.list.descPlaceholder')}
                           rows={2}
                           allowClear
                         />
@@ -112,7 +114,7 @@ const ListPropComp: React.FC<ListPropCompProps> = (props) =>
                   icon={<PlusOutlined />}
                   size="large"
                 >
-                  添加新列表项
+                  {t('props.list.addNewItem')}
                 </Button>
               </Form.Item>
             </>

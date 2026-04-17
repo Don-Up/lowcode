@@ -1,5 +1,6 @@
 // packages/client-next/app/editor/components/canvas/EditorCenterCanvas.tsx
 'use client';
+import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { swapComponent } from '@/store/componentSlice';
 import SortableContainer from '@/components/DragSort/SortableContainer';
@@ -80,7 +81,7 @@ export function getComp(comp: Component, isSelected: boolean = false) {
 }
 
 export default function EditorCenterCanvas() {
-
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const { components, isPreviewMode, selectedComponentId } = useAppSelector((state) => state.component.present);
@@ -145,7 +146,7 @@ export default function EditorCenterCanvas() {
       <>
       {isPreviewMode ? (
         <div className="bg-yellow-100 text-yellow-800 text-center py-1 text-sm font-medium">
-          预览模式中 - 拖拽和编辑已禁用
+          {t('editor.canvas.previewModeActive')}
         </div>
       ) : null}
       <div className="flex-2 bg-white custom-scrollbar round"

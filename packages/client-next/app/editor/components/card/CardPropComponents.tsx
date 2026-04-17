@@ -3,6 +3,7 @@
 
 import React, { useEffect } from 'react';
 import { Form, Input } from 'antd';
+import { useTranslation } from 'react-i18next';
 import CardProps from '@/app/editor/components/card/CardProps';
 import TextArea from 'antd/es/input/TextArea';
 
@@ -16,6 +17,7 @@ const CardPropComp: React.FC<CardPropCompProps> = ({
                                                      title, coverImg, description,
                                                      onChange,
                                                    }) => {
+  const { t } = useTranslation();
   const [form] = Form.useForm();
 
   useEffect(() => {
@@ -37,7 +39,7 @@ const CardPropComp: React.FC<CardPropCompProps> = ({
     >
       <div className={'grid grid-cols-1 gap-4 mt-5'}>
         <Form.Item
-          label="封面图片:"
+          label={t('props.card.coverImage')}
           name="coverImg"
           initialValue={coverImg}
         >
@@ -45,7 +47,7 @@ const CardPropComp: React.FC<CardPropCompProps> = ({
         </Form.Item>
 
         <Form.Item
-          label="标题:"
+          label={t('props.card.title')}
           name="title"
           initialValue={title}
         >
@@ -53,7 +55,7 @@ const CardPropComp: React.FC<CardPropCompProps> = ({
         </Form.Item>
 
         <Form.Item
-          label="描述:"
+          label={t('props.card.description')}
           name="description"
           initialValue={description}
         >

@@ -1,19 +1,20 @@
+'use client';
+
 import { Tabs } from "antd";
 import { AppstoreOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 import ComponentList from '@/app/editor/components/ComponentList';
 
 export default function EditLeftPanel() {
+  const { t } = useTranslation();
   const items = [
     {
       key: "component-list",
       label: (
         <>
-          <AppstoreOutlined /> <span>组件列表</span>
+          <AppstoreOutlined /> <span>{t('editor.leftPanel.componentList')}</span>
         </>
       ),
-      /**
-       * 不同组件列表
-       */
       children: <ComponentList />,
     },
   ];

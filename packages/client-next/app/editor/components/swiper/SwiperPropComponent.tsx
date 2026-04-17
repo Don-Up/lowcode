@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { Form, InputNumber, Select, Switch } from 'antd';
+import { useTranslation } from 'react-i18next';
 import SwiperProps from '@/app/editor/components/swiper/SwiperProps';
 
 
@@ -18,6 +19,7 @@ const SwiperPropComp: React.FC<SwiperPropCompProps> = ({
                                                          dotPosition,
                                                          onChange,
                                                        }) => {
+  const { t } = useTranslation();
   const [form] = Form.useForm();
 
   useEffect(() => {
@@ -39,17 +41,17 @@ const SwiperPropComp: React.FC<SwiperPropCompProps> = ({
       initialValues={{ interval, autoPlay, images, showIndicators, dotPosition }}
     >
       <div className={'grid grid-cols-1 gap-4 mt-5'}>
-        <Form.Item label="Interval" name="interval">
-          <InputNumber min={100} max={10000} placeholder="Enter interval (ms)" style={{ width: '100%' }} />
+        <Form.Item label={t('props.swiper.interval')} name="interval">
+          <InputNumber min={100} max={10000} placeholder={t('props.swiper.intervalPlaceholder')} style={{ width: '100%' }} />
         </Form.Item>
-        <Form.Item label="Auto Play" name="autoPlay" valuePropName="checked">
+        <Form.Item label={t('props.swiper.autoPlay')} name="autoPlay" valuePropName="checked">
           <Switch />
         </Form.Item>
-        <Form.Item label="Show Indicators" name="showIndicators" valuePropName="checked">
+        <Form.Item label={t('props.swiper.showIndicators')} name="showIndicators" valuePropName="checked">
           <Switch />
         </Form.Item>
-        <Form.Item label="Dot Position" name="dotPosition">
-          <Select placeholder="Select dot position">
+        <Form.Item label={t('props.swiper.dotPosition')} name="dotPosition">
+          <Select placeholder={t('props.swiper.dotPositionPlaceholder')}>
             <Select.Option value="top">Top</Select.Option>
             <Select.Option value="bottom">Bottom</Select.Option>
             <Select.Option value="left">Left</Select.Option>

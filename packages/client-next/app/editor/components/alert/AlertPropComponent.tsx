@@ -3,6 +3,7 @@
 
 import React, { useEffect } from 'react';
 import { Form, Input, Switch, Select } from 'antd';
+import { useTranslation } from 'react-i18next';
 import AlertProps from '@/app/editor/components/alert/AlertProps';
 
 interface AlertPropCompProps extends AlertProps {
@@ -17,6 +18,7 @@ const AlertPropComp: React.FC<AlertPropCompProps> = ({
                                                        alertType,
                                                        onChange,
                                                      }) => {
+  const { t } = useTranslation();
   const [form] = Form.useForm();
 
   useEffect(() => {
@@ -43,29 +45,29 @@ const AlertPropComp: React.FC<AlertPropCompProps> = ({
       <div className="grid grid-cols-1 gap-4">
         {/* 标题/内容 */}
         <Form.Item
-          label="标题"
+          label={t('props.alert.title')}
           name="title"
           initialValue={title}
-          tooltip="为空时显示默认提示：请输入文本"
+          tooltip={t('props.alert.titleHint')}
         >
-          <Input placeholder="请输入文本" allowClear />
+          <Input placeholder={t('props.alert.titlePlaceholder')} allowClear />
         </Form.Item>
 
         {/* 类型选择 */}
-        <Form.Item label="类型" name="alertType" initialValue={alertType}>
+        <Form.Item label={t('props.alert.type')} name="alertType" initialValue={alertType}>
           <Select
             options={[
-              { value: 'success', label: '成功 (绿色)' },
-              { value: 'info', label: '信息 (蓝色)' },
-              { value: 'warning', label: '警告 (黄色)' },
-              { value: 'error', label: '错误 (红色)' },
+              { value: 'success', label: t('props.alert.success') },
+              { value: 'info', label: t('props.alert.info') },
+              { value: 'warning', label: t('props.alert.warning') },
+              { value: 'error', label: t('props.alert.error') },
             ]}
           />
         </Form.Item>
 
         {/* 是否显示图标 */}
         <Form.Item
-          label="是否显示图标"
+          label={t('props.alert.showIcon')}
           name="showIcon"
           valuePropName="checked"
           initialValue={showIcon}
@@ -75,7 +77,7 @@ const AlertPropComp: React.FC<AlertPropCompProps> = ({
 
         {/* 是否显示关闭按钮 */}
         <Form.Item
-          label="是否显示关闭按钮"
+          label={t('props.alert.showClose')}
           name="showClose"
           valuePropName="checked"
           initialValue={showClose}
@@ -84,7 +86,7 @@ const AlertPropComp: React.FC<AlertPropCompProps> = ({
         </Form.Item>
 
         <div className="text-xs text-gray-500 mt-2">
-          提示：在画布中点击关闭按钮仅为视觉效果，不会真正移除组件
+          {t('props.alert.closeHint')}
         </div>
       </div>
     </Form>

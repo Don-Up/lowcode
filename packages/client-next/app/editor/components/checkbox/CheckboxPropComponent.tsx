@@ -4,6 +4,7 @@
 import React, { useEffect } from 'react';
 import { Button, Form, Input, Select, Space } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
 import CheckboxProps from '@/app/editor/components/checkbox/CheckboxProps';
 import { nanoid } from 'nanoid';
 
@@ -11,7 +12,7 @@ interface CheckboxPropCompProps extends CheckboxProps {
   onChange: (values: CheckboxProps) => void;
 }
 
-const defaultOption = { id: nanoid(6), value: '选项1' };
+const defaultOption = { id: nanoid(6), value: 'Option 1' };
 
 const CheckboxPropComp: React.FC<CheckboxPropCompProps> = ({
                                                              id,
@@ -20,16 +21,17 @@ const CheckboxPropComp: React.FC<CheckboxPropCompProps> = ({
                                                              options = [],
                                                              onChange,
                                                            }) => {
+  const { t } = useTranslation();
   const [form] = Form.useForm();
 
 // 只替换 useEffect 部分，其他保持不变
 
   useEffect(() => {
     form.setFieldsValue({
-      title: title || '默认展示的标题',
+      title: title || t('props.checkbox.titlePlaceholder'),
       defaultChecked: defaultChecked?.length ? defaultChecked : [],
     });
-  }, [title, defaultChecked, form]);
+  }, [title, defaultChecked, form, t]);
 
 // 仅在组件 mount 时初始化 options
   useEffect(() => {
@@ -65,18 +67,16 @@ const CheckboxPropComp: React.FC<CheckboxPropCompProps> = ({
       <div className="grid grid-cols-1 gap-4">
         {/* 默认展示的标题 */}
         <Form.Item
-          label="默认展示的标题"
+          label={t('props.checkbox.title')}
           name="title"
-          initialValue={title}
         >
-          <Input placeholder="默认展示的标题" allowClear />
+          <Input placeholder={t('props.checkbox.titlePlaceholder')} allowClear />
         </Form.Item>
 
         {/* 默认选中的选项 */}
         <Form.Item
-          label="默认选择的选项（可多选）"
+          label={t('props.checkbox.defaultSelected')}
           name="defaultChecked"
-          initialValue={defaultChecked}
         >
           <Form.Item noStyle shouldUpdate>
             {() => {
@@ -84,11 +84,11 @@ const CheckboxPropComp: React.FC<CheckboxPropCompProps> = ({
               return (
                 <Select
                   mode="multiple"
-                  placeholder="请选择默认选项（可多选）"
+                  placeholder={t('props.checkbox.selectedPlaceholder')}
                   allowClear
                   options={currentOptions.map((opt: any) => ({
                     value: opt.id,
-                    label: opt.value || '（空选项）',
+                    label: opt.value || t('props.checkbox.emptyOption'),
                   }))}
                 />
               );
@@ -113,10 +113,10 @@ const CheckboxPropComp: React.FC<CheckboxPropCompProps> = ({
                     <Form.Item
                       {...restField}
                       name={[name, 'value']}
-                      label="选项名称"
-                      rules={[{ required: true, message: '请输入选项名称' }]}
+                      label={t('props.checkbox.optionName')}
+                      rules={[{ required: true, message: t('props.checkbox.optionNameRequired') }]}
                     >
-                      <Input placeholder="选项名称" allowClear />
+                      <Input placeholder={t('props.checkbox.optionPlaceholder')} allowClear />
                     </Form.Item>
 
                     <Form.Item {...restField} name={[name, 'id']} noStyle>
@@ -129,11 +129,11 @@ const CheckboxPropComp: React.FC<CheckboxPropCompProps> = ({
               <Form.Item>
                 <Button
                   type="dashed"
-                  onClick={() => add({ id: nanoid(6), value: `选项${fields.length + 1}` })}
+                  onClick={() => add({ id: nanoid(6), value: `Option ${fields.length + 1}` })}
                   block
                   icon={<PlusOutlined />}
                 >
-                  添加新选项
+                  {t('props.checkbox.addNewOption')}
                 </Button>
               </Form.Item>
             </>
@@ -141,7 +141,7 @@ const CheckboxPropComp: React.FC<CheckboxPropCompProps> = ({
         </Form.List>
 
         <div className="text-xs text-gray-500 mt-2">
-          提示：画布中多选框为禁用状态，仅用于效果预览
+          {t('props.checkbox.canvasHint')}
         </div>
       </div>
     </Form>

@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { Form, Input, InputNumber, Select } from 'antd';
+import { useTranslation } from 'react-i18next';
 import ImageProps from '@/app/editor/components/image/ImageProps';
 
 
@@ -14,6 +15,7 @@ const ImagePropComp: React.FC<ImagePropCompProps> = ({
                                                        name, src, height, fillMode,
                                                        onChange,
                                                      }) => {
+  const { t } = useTranslation();
   const [form] = Form.useForm();
 
   useEffect(() => {
@@ -36,20 +38,20 @@ const ImagePropComp: React.FC<ImagePropCompProps> = ({
     >
       <div className={'grid grid-cols-1 gap-4 mt-5'}>
         <Form.Item
-          label="Image Source"
+          label={t('props.image.src')}
           name="src"
-          rules={[{ required: true, message: 'Please enter image URL.' }]}
+          rules={[{ required: true, message: t('props.image.srcRequired') }]}
         >
-          <Input placeholder="Enter image URL" />
+          <Input placeholder={t('props.image.srcPlaceholder')} />
         </Form.Item>
-        <Form.Item label="Height" name="height">
-          <InputNumber min={10} max={1000} placeholder="Enter height" style={{ width: '100%' }} />
+        <Form.Item label={t('props.image.height')} name="height">
+          <InputNumber min={10} max={1000} placeholder={t('props.image.heightPlaceholder')} style={{ width: '100%' }} />
         </Form.Item>
-        <Form.Item label="Name" name="name">
-          <Input placeholder="Enter component name" />
+        <Form.Item label={t('props.image.name')} name="name">
+          <Input placeholder={t('props.image.namePlaceholder')} />
         </Form.Item>
-        <Form.Item label="Fill Mode" name="fillMode">
-          <Select placeholder="Select fill mode">
+        <Form.Item label={t('props.image.fillMode')} name="fillMode">
+          <Select placeholder={t('props.image.fillModePlaceholder')}>
             <Select.Option value="cover">Cover</Select.Option>
             <Select.Option value="contain">Contain</Select.Option>
             <Select.Option value="none">None</Select.Option>

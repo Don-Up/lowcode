@@ -20,6 +20,7 @@ import TextAreaPropComponent from '@/app/editor/components/textarea/TextAreaProp
 import RadioPropComp from '@/app/editor/components/radio/RadioPropComponents';
 import CheckboxPropComp from '@/app/editor/components/checkbox/CheckboxPropComponent';
 import VideoPropComponent from '@/app/editor/components/video/VideoPropComponent';
+import GlobalPropComponent from '@/app/editor/components/GlobalPropComponent';
 
 export default function EditorRightPanel() {
 
@@ -91,7 +92,7 @@ export default function EditorRightPanel() {
           <span>全局属性</span>
         </>
       ),
-      children: <div>Global properties content here</div>,
+      children: <GlobalPropComponent />,
     },
   ];
 

@@ -142,18 +142,25 @@ export default function EditorCenterCanvas() {
 
   return (
     <SortableContainer items={components} onDragEnd={handleDragEnd}>
+      <>
+      {isPreviewMode ? (
+        <div className="bg-yellow-100 text-yellow-800 text-center py-1 text-sm font-medium">
+          预览模式中 - 拖拽和编辑已禁用
+        </div>
+      ) : null}
       <div className="flex-2 bg-white custom-scrollbar round"
            onDragOver={handleDragOver}
            onDrop={handleDrop}>
         <div className={'flex flex-col gap-2'}>
           {components.map(comp => <div key={comp.id}>
             <SortableItem id={comp.id} key={comp.id}>
-              {getComp(comp)}
+              {getComp(comp, comp.id === selectedComponentId)}
               {/*{renderNestedComponents(comp)}*/}
             </SortableItem>
           </div>)}
         </div>
       </div>
+      </>
     </SortableContainer>
   );
 }

@@ -1,29 +1,20 @@
 // app/page.tsx
 "use client";
 
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { increment, decrement, incrementByAmount } from "@/store/counterSlice";
 import { Button } from 'antd';
+import Link from 'next/link';
 
 export default function Home() {
-  const dispatch = useAppDispatch();
-  const count = useAppSelector((state) => state.counter.value);
-
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <h1 className="text-4xl font-bold mb-4">Counter: {count}</h1>
+      <h1 className="text-4xl font-bold mb-4">低代码平台</h1>
+      <p className="text-gray-600 mb-8">可视化拖拽式页面编辑器</p>
 
-      <div className="space-x-2">
-        <Button onClick={() => dispatch(increment())}>Increment</Button>
-
-        <Button onClick={() => dispatch(decrement())}>Decrement</Button>
-
-        <Button onClick={() => dispatch(incrementByAmount(5))}>
-          Increment by 5
+      <Link href="/editor">
+        <Button type="primary" size="large">
+          进入编辑器
         </Button>
-      </div>
-
+      </Link>
     </main>
-
   );
 }

@@ -36,6 +36,7 @@ import CheckboxComponent from '@/app/editor/components/checkbox';
 import CheckboxProps from '@/app/editor/components/checkbox/CheckboxProps';
 import VideoComponent from '@/app/editor/components/video';
 import VideoProps from '@/app/editor/components/video/VideoProps';
+import ActionMenu from './canvas/ActionMenu';
 
 export function getComp(comp: Component, isSelected: boolean = false) {
   const commonProps = { ...comp, isSelected }; // Pass isSelected to indicate selection
@@ -153,12 +154,16 @@ export default function EditorCenterCanvas() {
            onDragOver={handleDragOver}
            onDrop={handleDrop}>
         <div className={'flex flex-col gap-2'}>
-          {components.map(comp => <div key={comp.id}>
-            <SortableItem id={comp.id} key={comp.id}>
-              {getComp(comp, comp.id === selectedComponentId)}
-              {/*{renderNestedComponents(comp)}*/}
-            </SortableItem>
-          </div>)}
+          {components.map(comp => (
+            <div key={comp.id} className="relative">
+              <SortableItem id={comp.id} key={comp.id}>
+                {getComp(comp, comp.id === selectedComponentId)}
+              </SortableItem>
+              {comp.id === selectedComponentId && (
+                <ActionMenu componentId={comp.id} />
+              )}
+            </div>
+          ))}
         </div>
       </div>
       </>

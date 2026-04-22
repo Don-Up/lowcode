@@ -99,6 +99,18 @@ const compSlice = createSlice({
       state.submissionResult = null;
       state.submissionError = null;
     },
+    moveUpComponent: (state: ComponentState, action: PayloadAction<string>) => {
+      const index = state.components.findIndex((c) => c.id === action.payload);
+      if (index > 0) {
+        [state.components[index - 1], state.components[index]] = [state.components[index], state.components[index - 1]];
+      }
+    },
+    moveDownComponent: (state: ComponentState, action: PayloadAction<string>) => {
+      const index = state.components.findIndex((c) => c.id === action.payload);
+      if (index < state.components.length - 1) {
+        [state.components[index], state.components[index + 1]] = [state.components[index + 1], state.components[index]];
+      }
+    },
   },
 });
 
@@ -115,5 +127,7 @@ export const {
   setPreviewMode,
   updateFormData,
   clearSubmissionResult,
+  moveUpComponent,
+  moveDownComponent,
 } = compSlice.actions;
 export default compSlice.reducer;

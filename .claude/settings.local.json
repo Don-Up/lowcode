@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(pnpm tsc *)",
-      "Bash(pnpm --filter client-next exec tsc --noEmit)"
+      "Bash(pnpm --filter client-next exec tsc --noEmit)",
+      "Bash(pnpm test *)"
     ]
   }
 }

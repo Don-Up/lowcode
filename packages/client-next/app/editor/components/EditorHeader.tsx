@@ -8,12 +8,15 @@ import { setPreviewMode, loadState } from '@/store/componentSlice';
 import LanguageSwitch from './LanguageSwitch';
 import EditableTitle from './EditableTitle';
 import { saveDraft, loadDraft, clearDraft, getDraftTimestamp, formatDraftTime } from '@/utils/draft';
+import { usePublish } from '@/hooks/usePublish';
 
 const Header = () => {
   const { t } = useTranslation();
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { isPreviewMode, components, pageTitle } = useAppSelector((state) => state.component.present);
+
+  const { publish, publishing } = usePublish();
 
   const draftTimestamp = getDraftTimestamp();
   const draftTimeStr = draftTimestamp ? formatDraftTime(draftTimestamp) : null;
@@ -23,7 +26,6 @@ const Header = () => {
   };
 
   const handlePreview = () => {
-    // Save current state before preview
     saveDraft({ components, pageTitle });
     router.push('/preview');
   };
@@ -52,8 +54,21 @@ const Header = () => {
     message.success('草稿已清除');
   };
 
-  const handlePublish = () => {
-    message.info(t('editor.header.publishPending'));
+  const handlePublish = async () => {
+    if (components.length === 0) {
+      message.warning('请先添加组件后再发布');
+      return;
+    }
+
+    const result = await publish();
+
+    if (result.success) {
+      message.success({
+        content: `发布成功！页面ID: ${result.pageId || 'N/A'}`,
+      });
+      // TODO: Navigate to published page after backend implements page URL
+      // router.push(`/page/${result.pageId}`);
+    }
   };
 
   return (
@@ -88,7 +103,12 @@ const Header = () => {
             </Button>
           </Popconfirm>
         )}
-        <Button size="small" type="primary" onClick={handlePublish}>
+        <Button
+          size="small"
+          type="primary"
+          onClick={handlePublish}
+          loading={publishing}
+        >
           {t('editor.header.publish')}
         </Button>
         <LanguageSwitch />

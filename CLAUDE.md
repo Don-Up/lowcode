@@ -18,19 +18,6 @@ Monorepo visual low-code page editor with drag-and-drop UI for creating web page
 - **Frontend:** Redux Toolkit, Redux Persist, dnd-kit (drag-and-drop), Ant Design, react-i18next
 - **Backend:** JWT auth, Redis caching, PostgreSQL via Prisma
 
-## Running the Project
-
-```bash
-# Start main editor (port 3000)
-pnpm run:client-next
-
-# Start backend (port 3000)
-pnpm run:server
-
-# Build share package
-pnpm build:share
-```
-
 ## Project Structure
 
 ```
@@ -64,6 +51,9 @@ Components follow a consistent pattern with 3 files each:
 Available components: Text, Image, Swiper, Card, List, Split, Empty, RichText, QRCode, Alert, Input, TextArea, Radio, Checkbox, Video
 
 ## Conventions
+
+### Unit Tests
+- always add tests for new components, features and modifications
 
 ### Component Pattern
 Each editor component should have:

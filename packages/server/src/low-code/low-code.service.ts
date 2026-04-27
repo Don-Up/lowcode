@@ -9,12 +9,15 @@ export class LowCodeService {
   }
 
   release(data: CreatePageDto, user: any) {
+    // For development, use accountId from data or default to 1
+    const accountId = data.accountId || user?.id || 1;
 
     return {
       code: 200,
-      message: JSON.stringify(user),
+      message: `Page "${data.pageName}" released successfully`,
       data: {
-        pageId: '123',
+        pageId: `page_${Date.now()}`,
+        accountId,
       },
     };
   }

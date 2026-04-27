@@ -1,39 +1,55 @@
 'use client';
 
-import { Button, Switch, message } from 'antd';
+import { Button, Switch, message, Popconfirm } from 'antd';
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { setPreviewMode, loadState } from '@/store/componentSlice';
 import LanguageSwitch from './LanguageSwitch';
 import EditableTitle from './EditableTitle';
+import { saveDraft, loadDraft, clearDraft, getDraftTimestamp, formatDraftTime } from '@/utils/draft';
 
 const Header = () => {
   const { t } = useTranslation();
+  const router = useRouter();
   const dispatch = useAppDispatch();
-  const { isPreviewMode, components } = useAppSelector((state) => state.component.present);
+  const { isPreviewMode, components, pageTitle } = useAppSelector((state) => state.component.present);
+
+  const draftTimestamp = getDraftTimestamp();
+  const draftTimeStr = draftTimestamp ? formatDraftTime(draftTimestamp) : null;
 
   const handlePreviewToggle = (checked: boolean) => {
     dispatch(setPreviewMode(checked));
   };
 
+  const handlePreview = () => {
+    // Save current state before preview
+    saveDraft({ components, pageTitle });
+    router.push('/preview');
+  };
+
   const handleSaveDraft = () => {
-    localStorage.setItem('低代码草稿', JSON.stringify(components));
-    message.success(t('editor.header.draftSaved'));
+    saveDraft({ components, pageTitle });
+    message.success({
+      content: `${t('editor.header.draftSaved')}${draftTimeStr ? ` (${draftTimeStr})` : ''}`,
+    });
   };
 
   const handleLoadDraft = () => {
-    const saved = localStorage.getItem('低代码草稿');
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        dispatch(loadState(parsed));
-        message.success(t('editor.header.draftLoaded'));
-      } catch {
-        message.error(t('editor.header.draftLoadFailed'));
-      }
+    const draft = loadDraft();
+    if (draft) {
+      dispatch(loadState({ components: draft.components, pageTitle: draft.pageTitle }));
+      message.success({
+        content: `${t('editor.header.draftLoaded')} (${formatDraftTime(draft.savedAt)})`,
+      });
     } else {
       message.info(t('editor.header.noDraft'));
     }
+  };
+
+  const handleClearDraft = () => {
+    clearDraft();
+    message.success('草稿已清除');
   };
 
   const handlePublish = () => {
@@ -56,6 +72,22 @@ const Header = () => {
         <Button size="small" onClick={handleLoadDraft}>
           {t('editor.header.loadDraft')}
         </Button>
+        <Button size="small" onClick={handlePreview}>
+          预览页面
+        </Button>
+        {draftTimeStr && (
+          <Popconfirm
+            title="确定清除草稿？"
+            description="清除后将无法恢复"
+            onConfirm={handleClearDraft}
+            okText="确定"
+            cancelText="取消"
+          >
+            <Button size="small" type="text" danger>
+              清除草稿
+            </Button>
+          </Popconfirm>
+        )}
         <Button size="small" type="primary" onClick={handlePublish}>
           {t('editor.header.publish')}
         </Button>

@@ -87,8 +87,11 @@ const compSlice = createSlice({
       state.selectedComponentId = null;
     },
     saveState: (state) => state, // 仅用于触发保存，无需修改状态
-    loadState: (state, action: PayloadAction<Component[]>) => {
-      state.components = action.payload;
+    loadState: (state, action: PayloadAction<{ components: Component[]; pageTitle?: string }>) => {
+      state.components = action.payload.components;
+      if (action.payload.pageTitle) {
+        state.pageTitle = action.payload.pageTitle;
+      }
       state.selectedComponentId = null; // 重置选中状态
     },
     setPreviewMode: (state, action: PayloadAction<boolean>) => {

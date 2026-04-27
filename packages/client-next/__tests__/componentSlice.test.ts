@@ -9,6 +9,14 @@ import { Component } from '../app/editor/components/Model';
 const createMockComponent = (id: string, type: string = 'text'): Component =>
   ({ id, type } as Component);
 
+const baseState = {
+  isPreviewMode: false,
+  pageTitle: '小滴低代码平台',
+  formData: {},
+  submissionResult: null,
+  submissionError: null,
+};
+
 describe('componentSlice reducers', () => {
   describe('moveUpComponent', () => {
     it('should swap component with the one above it', () => {
@@ -19,10 +27,7 @@ describe('componentSlice reducers', () => {
           createMockComponent('3', 'card'),
         ],
         selectedComponentId: '2',
-        isPreviewMode: false,
-        formData: {},
-        submissionResult: null,
-        submissionError: null,
+        ...baseState,
       };
 
       const result = componentReducer(state, moveUpComponent('2'));
@@ -38,10 +43,7 @@ describe('componentSlice reducers', () => {
           createMockComponent('2', 'image'),
         ],
         selectedComponentId: '1',
-        isPreviewMode: false,
-        formData: {},
-        submissionResult: null,
-        submissionError: null,
+        ...baseState,
       };
 
       const result = componentReducer(state, moveUpComponent('1'));
@@ -60,10 +62,7 @@ describe('componentSlice reducers', () => {
           createMockComponent('3', 'card'),
         ],
         selectedComponentId: '2',
-        isPreviewMode: false,
-        formData: {},
-        submissionResult: null,
-        submissionError: null,
+        ...baseState,
       };
 
       const result = componentReducer(state, moveDownComponent('2'));
@@ -79,10 +78,7 @@ describe('componentSlice reducers', () => {
           createMockComponent('2', 'image'),
         ],
         selectedComponentId: '2',
-        isPreviewMode: false,
-        formData: {},
-        submissionResult: null,
-        submissionError: null,
+        ...baseState,
       };
 
       const result = componentReducer(state, moveDownComponent('2'));
@@ -100,10 +96,7 @@ describe('componentSlice reducers', () => {
           createMockComponent('2', 'image'),
         ],
         selectedComponentId: '1',
-        isPreviewMode: false,
-        formData: {},
-        submissionResult: null,
-        submissionError: null,
+        ...baseState,
       };
 
       const result = componentReducer(state, removeComponent('1'));
@@ -119,10 +112,7 @@ describe('componentSlice reducers', () => {
       const state = {
         components: [createMockComponent('1', 'text')],
         selectedComponentId: null,
-        isPreviewMode: false,
-        formData: {},
-        submissionResult: null,
-        submissionError: null,
+        ...baseState,
       };
 
       const result = componentReducer(state, setSelectComponentId('1'));
@@ -134,10 +124,7 @@ describe('componentSlice reducers', () => {
       const state = {
         components: [createMockComponent('1', 'text')],
         selectedComponentId: '1',
-        isPreviewMode: false,
-        formData: {},
-        submissionResult: null,
-        submissionError: null,
+        ...baseState,
       };
 
       const result = componentReducer(state, setSelectComponentId(null));

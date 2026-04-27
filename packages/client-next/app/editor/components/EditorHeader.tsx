@@ -3,8 +3,9 @@
 import { Button, Switch, message } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { setPreviewMode, saveState, loadState } from '@/store/componentSlice';
+import { setPreviewMode, loadState } from '@/store/componentSlice';
 import LanguageSwitch from './LanguageSwitch';
+import EditableTitle from './EditableTitle';
 
 const Header = () => {
   const { t } = useTranslation();
@@ -41,7 +42,9 @@ const Header = () => {
 
   return (
     <div className="flex items-center mx-6">
-      <div className="flex-1">{t('editor.header.title')}</div>
+      <div className="flex-1">
+        <EditableTitle />
+      </div>
       <div className="flex-1 flex items-center justify-center gap-4">
         <div className="flex items-center gap-2">
           <span className="text-sm text-gray-600">{t('editor.header.previewMode')}</span>

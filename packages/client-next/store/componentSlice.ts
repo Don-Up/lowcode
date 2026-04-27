@@ -6,6 +6,7 @@ interface ComponentState {
   components: Component[];
   selectedComponentId: string | null;
   isPreviewMode: boolean;
+  pageTitle: string;
   formData: { [key: string]: string },
   submissionResult: string | null
   submissionError: string | null
@@ -15,6 +16,7 @@ const initialState: ComponentState = {
   components: [],
   selectedComponentId: null,
   isPreviewMode: false,
+  pageTitle: '小滴低代码平台',
   formData: {},
   submissionResult: null,
   submissionError: null,
@@ -111,6 +113,9 @@ const compSlice = createSlice({
         [state.components[index], state.components[index + 1]] = [state.components[index + 1], state.components[index]];
       }
     },
+    setPageTitle: (state: ComponentState, action: PayloadAction<string>) => {
+      state.pageTitle = action.payload;
+    },
   },
 });
 
@@ -129,5 +134,6 @@ export const {
   clearSubmissionResult,
   moveUpComponent,
   moveDownComponent,
+  setPageTitle,
 } = compSlice.actions;
 export default compSlice.reducer;
